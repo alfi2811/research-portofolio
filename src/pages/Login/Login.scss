@@ -1,0 +1,34 @@
+.login-container {
+    width: 70%;
+    .title {
+        display: flex;
+        align-items: center;
+        h1 {
+            font-size: 5.5vmin;
+            font-weight: 700;        
+            margin-right: 2vw;
+        }
+        img {
+            width: 6vmin;
+        }
+    }
+    .desc {
+        font-size: 3vmin;
+        margin: 1vmin 0 10vmin;
+    }
+    .ant-btn-round.ant-btn-lg {
+        height: 9vmin;
+    }
+    input {
+        height: 9vmin;
+        border-radius: 14px;
+    }
+    .regis-link {
+        text-align: center;
+    }
+    button {
+        margin-top: 4vmin;
+        background: #48CAE4;
+        border-color: #48CAE4;
+    }
+}
