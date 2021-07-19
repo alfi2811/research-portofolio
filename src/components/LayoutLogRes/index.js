@@ -1,13 +1,13 @@
 import React from 'react'
 import { Row, Col } from 'antd';
-import person from '../../assets/images/person.png'
+// import person from '../../assets/images/person.png'
 import iconMsg from '../../assets/images/icon-msg.png'
 import iconChat from '../../assets/images/icon-chat.png'
 import iconFile from '../../assets/images/icon-file.png'
 import iconPen from '../../assets/images/icon-pen.png'
 import './LayoutLogRes.scss'
 
-const LayoutLogRes = ({children}) => {
+const LayoutLogRes = ({children, person}) => {
     return (
         <Row className="layout-container">
             <Col span={12} className="left">

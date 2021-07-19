@@ -2,6 +2,7 @@ import React from 'react';
 import { Form, Input, Button } from 'antd';
 import { InfoCircleOutlined } from '@ant-design/icons';
 import LayoutLogRes from '../../components/LayoutLogRes'
+import imgPerson from '../../assets/images/person.png'
 import emoji from '../../assets/images/Emoji.png'
 import './Login.scss'
 import { Link } from 'react-router-dom';
@@ -11,7 +12,7 @@ const Login = () => {
     const requiredMark = 'optional';
     
     return (
-        <LayoutLogRes>
+        <LayoutLogRes person={imgPerson}>
             <div className="login-container">
                 <div className="title">
                     <h1>Welcome Back</h1>
@@ -44,7 +45,7 @@ const Login = () => {
                         </Button>
                     </Form.Item>
                 </Form>
-                <p className="regis-link">Dont have an account? <Link>Register</Link> </p>
+                <p className="regis-link">Dont have an account? <Link to="/register">Register</Link> </p>
             </div>
         </LayoutLogRes>
     )
