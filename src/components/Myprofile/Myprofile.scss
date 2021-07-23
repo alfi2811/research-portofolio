@@ -1,0 +1,46 @@
+@import '../../assets/scss/colors.scss';
+
+.myprofile-container {
+    background: white;
+    padding: 2vmin 2vw;
+    margin-left: auto;
+    border-radius: 16px;
+    .title {
+        font-size: 3.5vmin;
+        font-weight: bold;
+        margin-bottom: 3vmin;
+    }
+    .person {
+        display: flex;
+        align-items: center;
+        margin-bottom: 3vmin;
+        .desc {   
+            margin-left: 1vw;     
+            .nama {
+                font-size: 2.6vmin;
+                color: black;                
+            }
+            .institusi {
+                font-size: 2.4vmin;
+                color: $rezearch-gray;                
+            }
+        }
+    }
+    .statistik {        
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 3vmin;
+        p {
+            text-align: center;
+        }
+        .total {
+            font-size: 3vmin;
+            color: $rezearch-gray;
+        }
+    }
+    a {
+        text-align: center;
+        display: block;
+        text-decoration: underline;
+    }
+}

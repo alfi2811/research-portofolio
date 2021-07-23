@@ -6,3 +6,18 @@ h1, p {
     font-family: 'Lato', sans-serif;
     margin: 0;
 }
+
+.content-container {
+    background: #87b1be;
+    min-height: 100vh;
+}
+.button-blue.ant-btn {    
+    height: 8vmin;
+    border: 1px solid $rezearch-blue-2;
+    color: $rezearch-blue-2;
+    background-color: transparent;
+    &:hover {
+        color: white;
+        background-color: $rezearch-blue-2;
+    }
+}

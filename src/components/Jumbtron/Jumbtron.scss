@@ -1,0 +1,29 @@
+@import '../../assets/scss/colors.scss';
+
+.jumbotron-container {
+    background-color: white;
+    padding: 4vmin 3vw 6vmin;
+    position: relative;
+    border-radius: 16px;
+    h1 {
+        font-size: 4vmin;
+        font-weight: bold;
+    }
+    h2.desc {
+        margin: 2vmin 0 4vmin;
+        color: $rezearch-gray;
+        font-weight: 400;
+    }
+    p.text {
+        width: 58%;
+        margin-bottom: 5vmin;
+    }
+    .illustration {
+        position: absolute;
+        right: 0;
+        bottom: 2vmin;
+        img {
+            width: 50vmin;
+        }
+    }
+}

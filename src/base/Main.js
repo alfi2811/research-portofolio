@@ -8,6 +8,7 @@ import NotFound from '../helper/components/404';
 // import Home from '../pages/Home'
 import Login from '../pages/Login';
 import Register from '../pages/Register';
+import Home from '../pages/Home';
 
 // REDUX
 import { connect } from 'react-redux';
@@ -28,7 +29,8 @@ class Main extends Component {
 				<div id="Main" className="main-panel">					
 					<div className="content-container">
 						<Switch>
-							<Route exact path="/" component={Login} />							
+							<Route exact path="/" component={Home} />							
+							<Route exact path="/login" component={Login} />							
 							<Route exact path="/register" component={Register} />							
 							<Route component={NotFound} />
 						</Switch>
