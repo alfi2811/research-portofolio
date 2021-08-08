@@ -3,13 +3,16 @@
 .navbar-container {  
     box-sizing: border-box;  
     padding: 2vmin 4vw;
-    margin-bottom: 4vmin;
+    // margin-bottom: 4vmin;
     background: white;
     .title {
         h1 {
             color: $rezearch-blue;
             font-size: 4vmin;
             font-weight: bold;
+        }
+        img {
+            width: 20vmin;
         }
     }
     .search {

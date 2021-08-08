@@ -1,0 +1,132 @@
+@import '../../assets//scss/colors.scss';
+.detailres-container {    
+    background-color: $rezearch-blue;
+    padding: 6vmin 0;
+    width: 100%;
+    min-height: 100vh;
+    .research-header {
+        margin: 0 auto;
+        width: 80%;
+        background-color: white;
+        padding: 5vmin 3vw;
+        border-radius: 16px;
+        .title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            h1 {
+                font-size: 4vmin;
+                font-weight: bold;
+            }
+            img {
+                width: 8vmin;
+                cursor: pointer;
+            }
+        }
+        .statistic {
+            display: flex;
+            font-size: 2vmin;
+            color: $rezearch-gray;
+            margin: 4vmin 0;
+            
+            div:last-child {
+                margin-left: 2vw;
+            }
+            img {
+                width: 4vmin;
+                margin-right: .5vw;
+            }  
+        }
+        h2 {
+            font-size: 3vmin;
+        }
+        .authors {
+            margin-top: 3vmin;
+            display: flex;
+            .author {
+                display: flex;
+                align-items: center;
+                margin: 0 2vw 3vmin 0;                
+                .desc {   
+                    margin-left: 1.5vw;     
+                    .nama {
+                        font-size: 2.2vmin;
+                        color: black;                
+                    }
+                    .institusi {
+                        font-size: 2vmin;
+                        color: $rezearch-gray;                
+                    }
+                }                
+            }
+        }
+    }
+    .research-tab {
+        margin: 4vmin auto 0;
+        width: 80%;
+        background-color: white;
+        padding: 5vmin 3vw;
+        border-radius: 16px;
+        .ant-tabs-tab {
+            padding-left: 1vw;
+            padding-right: 1vw;
+            &-btn {
+                font-family: 'Lato', sans-serif;
+                font-weight: 600;
+                font-size: 2.6vmin;
+
+            }
+        }
+        .research-pdf {
+            width: 70%;
+            font-family: 'Lato', sans-serif;
+            margin: 5vmin 0 10vmin;
+            h2 {
+                font-size: 2.6vmin;
+                font-weight: bold;
+                margin-bottom: 4vmin;
+            }
+            img {
+                width: 60%;
+            }
+            .title {
+                font-size: 2.4vmin;
+                div:not(:last-child) {
+                    font-weight: bold;                    
+                }
+            }
+            p {
+                font-size: 2.1vmin;
+                color: $rezearch-gray;                
+            }
+        }
+        .research-detail {
+            margin-top: 4vmin;
+            .ant-row {
+                margin-bottom: 3.5vmin;
+            }
+            .ant-col {
+                font-family: 'Lato', sans-serif;                
+                &:first-child {
+                    font-weight: bold;
+                    font-size: 2.4vmin;
+                }
+                &:last-child {
+                    color: $rezearch-gray;
+                    font-size: 2.2vmin;
+                    line-height: 1.8;
+                    letter-spacing: 0.02vmin;
+                }
+            }
+        }
+        .research-fulltext {
+            width: 90%;
+            margin: 0 auto;
+            border: none;            
+            .rpv-core-inner-page {
+                background: #F2F2F2;
+                padding: 7vmin 4vw;
+            }
+        }
+    }
+}

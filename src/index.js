@@ -23,7 +23,6 @@ const store = createStore(
 // SET DEFAULT AXIOS
 axios.defaults.baseURL = process.env.REACT_APP_API_ENDPOINT;
 
-
 ReactDOM.render(
   <Provider store={store}>
     <React.StrictMode>

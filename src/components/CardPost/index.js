@@ -5,9 +5,14 @@ import ava from '../../assets/images/profile.png'
 import Calendar from '../../assets/images/Calendar.png'
 import Chart from '../../assets/images/Chart.png'
 import Paper from '../../assets/images/Paper.png'
+import { format, parseISO } from "date-fns"
 import './CardPost.scss'
 
-const CardPost = () => {
+const CardPost = ({author, title, date, id}) => {
+    const changeFormat = (date) => {
+		let newDate = format(parseISO(date), "MMM yyyy")
+		return newDate
+	}
     return (
         <div className="card">
             <div className="card-header">
@@ -16,17 +21,17 @@ const CardPost = () => {
                     src={ava}         
                 />
                 <div className="desc">
-                    <p className="nama">Jati H</p>
+                    <p className="nama">{author}</p>
                     <p className="institusi">Telkom</p>
                 </div>  
             </div>
             <div className="card-text">
-                <p>Improving GQM+Strategies with Balanced Scorecard's Perspectives: A Feasibility Studies</p>
+                <p>{title}</p>
             </div>
             <div className="card-info">
                 <div>
                     <img src={Calendar} alt="" />
-                    <span>Jan 2018</span>
+                    <span>{changeFormat(date)}</span>
                 </div>
                 <div>
                     <img src={Chart} alt="" />

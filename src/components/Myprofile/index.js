@@ -32,7 +32,7 @@ const Myprofile = () => {
                     <p className="nama">Research</p>
                 </div>
             </div>
-            <Link>Go To Profile</Link>
+            <Link to="/profile">Go To Profile</Link>
         </div>
     )
 }

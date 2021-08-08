@@ -9,18 +9,20 @@ import NotFound from '../helper/components/404';
 import Login from '../pages/Login';
 import Register from '../pages/Register';
 import Home from '../pages/Home';
+import UploadFile from '../pages/UploadFile';
 
 // REDUX
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import * as mainActions from '../redux/actions/main';
+import DetailResearch from '../pages/DetailResearch';
 
 
 
 class Main extends Component {
 	componentDidMount() {		
-        this.props.actionsMain.get_item();							
+        // this.props.actionsMain.get_item();							
 	}	
 
     render() {
@@ -32,6 +34,8 @@ class Main extends Component {
 							<Route exact path="/" component={Home} />							
 							<Route exact path="/login" component={Login} />							
 							<Route exact path="/register" component={Register} />							
+							<Route exact path="/upload" component={UploadFile} />							
+							<Route exact path="/detail-research" component={DetailResearch} />							
 							<Route component={NotFound} />
 						</Switch>
 					</div>											

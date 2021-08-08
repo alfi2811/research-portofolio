@@ -1,5 +1,7 @@
 const main_state = {
 	posts: false,
+	user_data: false,
+	list_research: false,
 }
 
 const main = (state = main_state, action) => {

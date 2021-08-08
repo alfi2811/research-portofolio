@@ -1,0 +1,47 @@
+@import '../../assets//scss/colors.scss';
+.upload-container {    
+    background-color: $rezearch-blue;
+    padding: 6vmin 0;
+    width: 100%;
+    .upload-form {
+        margin: 0 auto;
+        width: 80%;
+        background-color: white;
+        padding: 6vmin 6vw;
+        border-radius: 16px;
+        .title {        
+            font-size: 4vmin;
+            margin-bottom: 5vmin;
+        }
+        .ant-btn-round.ant-btn-lg {
+            height: 9vmin;
+            background: #48CAE4;
+            border-color: #48CAE4;
+        }
+        .ant-picker {
+            border-radius: 24px;
+            padding: 0 1vw 0 0;
+            width: 100%;
+        }
+        input {
+            height: 9vmin;
+            border-radius: 24px;
+            padding: 0 2vw;
+        }
+        textarea {
+            padding: 3vmin 2vw;
+            border-radius: 24px;
+        }
+        button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40vw;
+            margin: 0 auto;
+            border-radius: 24px;
+            span {
+                margin-left: 1vw;
+            }
+        }
+    }
+}
