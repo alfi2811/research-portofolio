@@ -21,8 +21,8 @@ const CardPost = ({author, title, date, id}) => {
                     src={ava}         
                 />
                 <div className="desc">
-                    <p className="nama">{author}</p>
-                    <p className="institusi">Telkom</p>
+                    <p className="nama">{author} H Husein</p>
+                    <p className="institusi">Telkom University</p>
                 </div>  
             </div>
             <div className="card-text">

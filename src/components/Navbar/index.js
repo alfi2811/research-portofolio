@@ -6,7 +6,7 @@ import { MdBookmark } from "react-icons/md";
 import { VscDiffAdded } from "react-icons/vsc";
 import { Link } from 'react-router-dom'
 
-import Logo from '../../assets/images/Logo.png'
+import Logo from '../../assets/images/Logo.svg'
 import './Navbar.scss'
 
 const Navbar = ({justLogo}) => {

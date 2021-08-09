@@ -10,12 +10,12 @@ const Myprofile = () => {
             <h1 className="title">My Profile</h1>
             <div className="person">
                 <Avatar
-                    size={{ xs: 24, sm: 32, md: 40, lg: 64, xl: 80, xxl: 100 }}
+                    size={{ xs: 14, sm: 22, md: 30, lg: 54, xl: 65, xxl: 90 }}
                     src={ava}         
                 />
                 <div className="desc">
-                    <p className="nama">Jati H</p>
-                    <p className="institusi">Telkom</p>
+                    <p className="nama">Jati H. Husein</p>
+                    <p className="institusi">Telkom University</p>
                 </div>                
             </div>
             <div className="statistik">

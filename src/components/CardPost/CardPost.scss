@@ -13,11 +13,11 @@
         .desc {   
             margin-left: 1.5vw;     
             .nama {
-                font-size: 2.6vmin;
+                font-size: 2.2vmin;
                 color: black;                
             }
             .institusi {
-                font-size: 2.4vmin;
+                font-size: 2vmin;
                 color: $rezearch-gray;                
             }
         }
@@ -25,20 +25,20 @@
     &-text {
         margin: 2vmin 0;
         p {
-            font-size: 2.6vmin;
+            font-size: 2.2vmin;
             font-weight: bold;
         }
     }
     &-info {
         display: flex;
-        font-size: 2vmin;
+        font-size: 1.8vmin;
         color: $rezearch-gray;
         margin-bottom: 4vmin;
         div:last-child {
             margin-left: 2vw;
         }
         img {
-            width: 4vmin;
+            width: 3vmin;
             margin-right: .5vw;
         }        
     }
@@ -47,16 +47,16 @@
         button {
             display: flex;
             align-items: center;
-            color: white;
-            padding: 0 2vw;                   
+            color: white;                           
             background: $rezearch-blue-2;
             border: none; 
             &.ant-btn {    
-                height: 7vmin;
+                height: 6vmin;
                 border-radius: 16px;
+                padding: 0 1.5vw;
             }
             span:last-child {
-                font-size: 2.2vmin;
+                font-size: 2vmin;
                 margin-left: 1vw;
             } 
             &:last-child {       

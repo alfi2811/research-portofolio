@@ -79,7 +79,7 @@ const DetailResearch = () => {
                         <TabPane tab="Full Text" key="1">
                             <div className="research-pdf">
                                 <h2>File Attachment</h2>
-                                <Row>
+                                <Row style={{alignItems:"center"}}>
                                     <Col span={2}> <img src={pdf} alt="" /> </Col>
                                     <Col span={22}>                                        
                                         <Row className="title">
