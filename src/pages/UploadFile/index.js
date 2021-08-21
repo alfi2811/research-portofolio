@@ -13,8 +13,7 @@ const normFile = (e) => {
   console.log('Upload event:', e.fileList);
   console.log('Upload event:', e);
   
-  if (Array.isArray(e)) {
-    console.log("masuk IF")
+  if (Array.isArray(e)) {    
     return e;
   }
   let newA = []

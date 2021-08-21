@@ -13,8 +13,7 @@ import { search_research } from '../../redux/actions/main';
 
 const Navbar = ({justLogo}) => {
     const dispatch = useDispatch()
-    const handleKeyPress = (value) => {      
-      console.log(value)
+    const handleKeyPress = (value) => {            
       dispatch(search_research(value.key))
     }
     return (        

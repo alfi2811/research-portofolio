@@ -17,8 +17,7 @@ const Bookmark = () => {
   }, [dispatch, history])
   const main = useSelector(state => state?.main)
   // const posts = main?.list_research
-  const bookmarks = main?.bookmarks_data?.bookmarkList
-  console.log(bookmarks)
+  const bookmarks = main?.bookmarks_data?.bookmarkList  
 
   return (
     <div>

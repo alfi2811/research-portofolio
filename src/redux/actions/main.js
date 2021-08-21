@@ -70,8 +70,7 @@ export const get_profile = () => {
       }
       axios
         .post('/user/viewUser', payload, config)
-        .then((resp) => {                        
-            console.log(resp.data)
+        .then((resp) => {
             dispatch(put_data('profile_data', resp.data.dataUser))
         })
         .catch((err) => {                       
@@ -143,8 +142,7 @@ export const post_login = (data, history) => {
       dispatch(toggle_loader(true))
       axios
         .post('/login', data)
-        .then((resp) => {        
-            console.log(resp.data)
+        .then((resp) => {                    
             ls.setItem('token', resp.data.token);
             ls.setItem('id_user', resp.data?.payload[0]?.id);
             ls.setItem('name_user', resp.data?.payload[0]?.fullname);

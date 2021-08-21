@@ -24,7 +24,7 @@ const EditUser = () => {
   };
   const main = useSelector(state => state?.main)  
   const data = main?.profile_data.dataUser
-  console.log(data)
+  
   return (
     <div className="edit-container">
       <Link to="/profile">
