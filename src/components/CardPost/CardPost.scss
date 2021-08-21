@@ -7,9 +7,12 @@
     padding: 5vmin 3vw;
     border-radius: 16px;
     &-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 3vmin;
+      .left {
         display: flex;
         align-items: center;
-        margin-bottom: 3vmin;
         .desc {   
             margin-left: 1.5vw;     
             .nama {
@@ -21,6 +24,7 @@
                 color: $rezearch-gray;                
             }
         }
+      }
     }
     &-text {
         margin: 2vmin 0;

@@ -13,6 +13,7 @@ import Main from './base/Main';
 // STYLES
 import 'antd/dist/antd.css';
 import './assets/scss/index.scss';
+import 'react-responsive-modal/styles.css';
 
 // SET REDUX STORE
 const store = createStore(

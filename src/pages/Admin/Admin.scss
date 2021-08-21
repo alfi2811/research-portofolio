@@ -1,0 +1,70 @@
+
+@import '../../assets//scss/colors.scss';
+.admin-container {  
+  margin: 6vmin auto;
+  width: 70%;
+  min-height: 100vh;
+  padding-bottom: 1px;
+  font-size: 16px;
+  h1.title {
+    font-weight: 700;
+    font-size: 4vmin;
+  }
+  .card-post {
+    width: 80%;
+    margin: 10vmin auto;
+  }
+  .table {
+    &-header {
+      background-color: #FAFBFC;
+      border-radius: 15px;
+      &-content {
+        padding: 1.5vmin 4vw;
+        font-size: 0.9em;
+      }
+    }
+    &-rows {
+      padding: 3vmin 4vw;
+      &-item {
+        padding: 2vmin 0;
+        p {
+          font-size: 1em;
+          font-weight: bold;
+        }
+        .detail {
+          font-size: 0.85em;
+          color: #00B4D8;
+          cursor: pointer;
+        }
+        button {          
+          color: white;
+          background: $rezearch-blue-2;
+          border: none; 
+          &.ant-btn {    
+              height: 6vmin;
+              border-radius: 16px;
+              padding: 0 2vw;
+          }
+          span:last-child {
+              font-size: 2vmin;              
+          }
+          &:first-child {
+              &:hover {
+                background: $rezearch-blue;                                
+              }         
+          }                      
+          &:last-child {
+              background: white;
+              border: 1px solid $rezearch-blue-2;
+              color: $rezearch-blue-2;
+              margin-left: 2vw;       
+              &:hover {
+                  background: $rezearch-blue-2;
+                  color: white;
+              }         
+          }                      
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+
+@import '../../assets//scss/colors.scss';
+.bookmark-container {  
+  margin: 6vmin auto;
+  width: 60%;
+  min-height: 100vh;
+  padding-bottom: 1px;
+  h1.title {
+    font-weight: 700;
+    font-size: 4vmin;
+  }
+  .card-post {
+    width: 80%;
+    margin: 10vmin auto;
+  }
+}

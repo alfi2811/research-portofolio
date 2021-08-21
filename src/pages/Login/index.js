@@ -40,41 +40,58 @@ const Login = () => {
                     onFinish={onFinish}
                     >                     */}
                 <Form
-                    form={form}
-                    layout="vertical"                    
-                    onFinish={onFinish}
-                    >                    
-                    <Form.Item label="Email" name="email">
-                        <Input />
-                    </Form.Item>
-                    <Form.Item
-                        label="Password"
-                        name="password"                        
-                    >
-                        <Input bordered />
-                    </Form.Item>
-                    {/* <Form.Item>
-                        <Button type="primary" htmlType="submit" shape="round" size="large" block>
-                            Login
-                        </Button>
-                    </Form.Item> */}
-                    <Form.Item shouldUpdate>
-                        {() => (
-                        <Button
-                            shape="round" 
-                            size="large" 
-                            type="primary"
-                            htmlType="submit"
-                            disabled={
-                            !form.isFieldsTouched(true) ||
-                            !!form.getFieldsError().filter(({ errors }) => errors.length).length
-                            }
-                            block
-                        >
-                            Log in
-                        </Button>
-                        )}
-                    </Form.Item>
+                  form={form}
+                  layout="vertical"                    
+                  onFinish={onFinish}
+                  >                    
+                  <Form.Item 
+                    label="Email" 
+                    name="email"
+                    required={false}
+                    rules={[
+                      {
+                          required: true,
+                          message: 'Please input your Email!',
+                      },
+                    ]}
+                  >
+                      <Input />
+                  </Form.Item>                    
+                  <Form.Item 
+                    label="Password" 
+                    name="password" 
+                    required={false}                      
+                    rules={[
+                      {
+                          required: true,
+                          message: 'Please input your password!',
+                      },
+                    ]}                      
+                  >
+                    <Input.Password />
+                  </Form.Item>
+                  {/* <Form.Item>
+                      <Button type="primary" htmlType="submit" shape="round" size="large" block>
+                          Login
+                      </Button>
+                  </Form.Item> */}
+                  <Form.Item shouldUpdate>
+                      {() => (
+                      <Button
+                          shape="round" 
+                          size="large" 
+                          type="primary"
+                          htmlType="submit"
+                          // disabled={
+                          // !form.isFieldsTouched(true) ||
+                          // !!form.getFieldsError().filter(({ errors }) => errors.length).length
+                          // }
+                          block
+                      >
+                          Log in
+                      </Button>
+                      )}
+                  </Form.Item>
                 </Form>
                 <p className="regis-link">Dont have an account? <Link to="/register">Register</Link> </p>
             </div>

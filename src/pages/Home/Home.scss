@@ -1,10 +1,21 @@
 .home-container {
-    margin: 4vmin 3vw;
+    margin: 0 3vw;
+    padding-top: 20vh;
     padding-bottom: 2vmin;
     .profile {
         padding-left: 2vw;
     }
     .list-post {
         margin-top: 4vmin;
+    }
+    .backtotop {
+      height: 40;
+      width: 40;
+      line-height: 40px;
+      border-radius: 4;
+      background-color: #1088e9;
+      color: #fff;
+      text-align: center;
+      font-size: 14px;
     }
 }

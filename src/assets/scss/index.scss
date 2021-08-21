@@ -1,15 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
 @import './colors.scss';
-
+@import './partial/modal';
 
 h1, p {
     font-family: 'Lato', sans-serif;
     margin: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .content-container {
-    background: #cbdce2;
-    min-height: 100vh;
+  background: #F6FCFE;
+  min-height: 100vh;  
+}
+.ant-spin-nested-loading > div > .ant-spin {
+    max-height: 100vh;
+    position: fixed;
 }
 .button-blue.ant-btn {    
     height: 6vmin;
