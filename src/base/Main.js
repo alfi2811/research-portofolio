@@ -48,6 +48,7 @@ class Main extends Component {
               <Route exact path="/bookmark" component={Bookmark} />
               <Route exact path="/edit-user" component={EditUser} />
               <Route exact path="/admin" component={Admin} />
+              {/* <Route exact path="/term-and-condition" component={Tnc} /> */}
               <Route component={NotFound} />
             </Switch>
           </div>

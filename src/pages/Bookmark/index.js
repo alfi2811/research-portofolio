@@ -13,11 +13,13 @@ const Bookmark = () => {
 
   useEffect(() => {
     dispatch(check_login(history))
-    dispatch(post_data("/user/getAllBookmark", "bookmarks_data"))
+    if(window.localStorage.token) {      
+      dispatch(post_data("/user/getAllBookmark", "bookmarks_data"))
+    }
   }, [dispatch, history])
   const main = useSelector(state => state?.main)
   // const posts = main?.list_research
-  const bookmarks = main?.bookmarks_data?.bookmarkList  
+  const bookmarks = main?.bookmarks_data?.bookmarked  
 
   return (
     <div>
@@ -26,13 +28,11 @@ const Bookmark = () => {
         <h1 className="title">Saved Research</h1>
         <div className="card-post">
             {
-                bookmarks && bookmarks.map((post) => (
+                bookmarks && bookmarks?.map((post) => (
                     <CardPost 
                         key={post._id}
-                        author={post.author} 
-                        title={post.articleTitle} 
-                        date={post.publicationDate}
-                        id={post._id}
+                        post={post}                        
+                        isUserRes={window.localStorage.id_user===post.uploaderID?true:false}
                     />
                 ))
             }

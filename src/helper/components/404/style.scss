@@ -1,10 +1,18 @@
-.iframe{
-	position: fixed;
-	width: 100%;
-	height: 100vh;
-	margin: 0;
-	padding: 0;
-	overflow: hidden;
-	border: 0;
-	z-index: 1000;
+.component-404{
+	display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-size: 16px;
+  h1 {
+    font-size: 2em;
+  }
+  .ant-divider-vertical {
+    height: 3.2em;
+    border-width: 2px;
+  }
+  h2 {
+    font-size: 1.8em;
+    margin-bottom: 0;
+  }
 }

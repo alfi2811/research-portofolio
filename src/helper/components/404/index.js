@@ -1,11 +1,16 @@
 import React from 'react'
+import { Divider } from 'antd';
 import './style.scss';
 
 class Page404 extends React.Component {
 
 	render(){
 		return(
-			<iframe className="iframe" title="page404" src="https://oops.garena.com/404" frameBorder="0"></iframe>
+			<div className="component-404">
+        <h1>404</h1>
+        <Divider type="vertical" />
+        <h2>Page Not Found</h2>
+      </div>
 		);
 	}
 }

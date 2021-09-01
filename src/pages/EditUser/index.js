@@ -1,29 +1,46 @@
-import { Col, Row, Form, Input, Button, Select } from 'antd';
-import { LeftOutlined } from '@ant-design/icons';
 import React, { useEffect, useState } from 'react'
+import { Col, Row, Form, Input, Button, Select, Upload } from 'antd';
+import { LeftOutlined } from '@ant-design/icons';
+import { useHistory } from 'react-router-dom'
 import { Link } from 'react-router-dom';
-import ava from '../../assets/images/profile.svg'
 import './EditUser.scss'
 import { useDispatch, useSelector } from 'react-redux';
-import { post_data } from '../../redux/actions/main';
+import { post_data, check_login, post_edit_user, upload_photo } from '../../redux/actions/main';
+// import UploadPhoto from '../../components/UploadPhoto';
 
 const { Option } = Select;
 
 const EditUser = () => {
   const [form] = Form.useForm();
   const dispatch = useDispatch()
+  const [fileList, setfileList] = useState(false)
+  let history = useHistory()
     // const requiredMark = 'optional';
   const [, forceUpdate] = useState({}); // To disable submit button at the beginning.        
 
   useEffect(() => {
-      forceUpdate({});
-      dispatch(post_data("/user/viewUser", "profile_data"))      
-  }, [dispatch]);
+    forceUpdate({});
+    dispatch(check_login(history))
+    if(window.localStorage.token) {      
+      dispatch(post_data("/user/getUser", "user_data"))      
+    }
+  }, [dispatch, history]);
+  const handleChange = (info) => {        
+    console.log('file: ', info);          
+    setfileList(info.file)
+  };
   const onFinish = (values) => {        
-      console.log('Received values of form: ', values);      
+    console.log('Received values of form: ', values);      
+    if(fileList) {
+      dispatch(upload_photo(fileList, values, history))
+    } 
+    else {
+      dispatch(post_edit_user(values, history))    
+    }
   };
   const main = useSelector(state => state?.main)  
-  const data = main?.profile_data.dataUser
+  const data = main?.user_data?.result  
+  console.log(fileList)
   
   return (
     <div className="edit-container">
@@ -41,42 +58,56 @@ const EditUser = () => {
             layout="vertical"                    
             onFinish={onFinish}
             >
-            <Row>
-              <Col span={8} className="change-ava">
-                <img src={ava} alt="" />
-                <Button type="primary" shape="round" size="large" block>
-                  Edit Your Profile
-                </Button>
+            <Row justify="space-between" align="top">
+              <Col span={8} className="upload-ava">
+                {/* <UploadPhoto handleChange={(file) => handleChange(file)} /> */}
+                <img src={data?.photoProfile} alt="" />
+                <Upload maxCount={1} onChange={handleChange} beforeUpload={() => false}>
+                  <Button type="primary" shape="round" size="large" block>
+                    Upload Photo
+                  </Button>
+                </Upload>
               </Col>
               <Col span={14} className="change-form">
-                <Form.Item label="Fullname" name="fullname" initialValue={data.fullname}>
+                <Form.Item name="id" initialValue={data?._id} hidden={true}>
                     <Input />
                 </Form.Item>
-                <Form.Item label="Position" name="position" initialValue={data.fullname}>
+                <Form.Item label="Fullname" name="fullname" initialValue={data?.fullName}>
                     <Input />
                 </Form.Item>
-                <Form.Item label="Affiliation" name="affiliation">
+                <Form.Item label="Position" name="role" initialValue={data?.role}>
                     <Input />
                 </Form.Item>
-                <Form.Item label="Field of Interest" name="interest">
+                <Form.Item label="Affiliation" name="affiliation" initialValue={data?.affiliation}>
                     <Input />
-                </Form.Item>
+                </Form.Item>                
                 <Form.Item
-                  name="fields"
+                  name="field"
                   label="Fields of Interest"
-                  initialValue={['Requirement Engineering']}                  
+                  initialValue={data?.fields}
                 >
-                  <Select mode="multiple" defaultValue={['Requirement Engineering']} placeholder="Please select favourite colors">
+                  <Select mode="multiple" placeholder="Please select favourite colors">
                     <Option value="Requirement Engineering">Requirement Engineering</Option>
                     <Option value="Game Development">Game Development</Option>
                     <Option value="Software Engineering">Software Engineering</Option>
                   </Select>
                 </Form.Item>
-                <Form.Item label="Email" name="email">
+                <Form.Item label="Email" name="email" initialValue={data?.email}>
                     <Input />
                 </Form.Item>
-                <Form.Item label="Password" name="password">
-                    <Input />
+                <Form.Item 
+                  label="Password" 
+                  name="password" 
+                  tooltip="Please enter your current password or new password"
+                  required={false}                  
+                  rules={[
+                    {
+                      required: true,
+                      message: 'Please input your password!',
+                    }
+                  ]}
+                >
+                  <Input.Password />
                 </Form.Item>
               </Col>
             </Row>            

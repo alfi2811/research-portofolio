@@ -5,10 +5,12 @@ const main_state = {
 	profile_data: false,
 	loader: false,
   detail_research: false,
+  url_avatar: false,
 
   modal_msg: false,
   modal_data: false,
   modal_alert: false,
+  modal_tnc: false,
 }
 
 const main = (state = main_state, action) => {

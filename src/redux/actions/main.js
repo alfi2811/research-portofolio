@@ -42,44 +42,140 @@ const success = (msg) => {
       onOk() {
         console.log('OK');
       },
+      centered: true,
     });
   }
 }
 
-export const check_login = (history) => {
-    return () => {      
-      if(!token) {
-        history.push('/login')   
+const error = (msg) => {
+  return () => {
+    Modal.error({
+      title: 'Error!!',
+      content: msg,
+      centered: true,
+    });
+  }
+}
+
+export const check_login = (history, isAuth = false) => {
+    return (dispatch) => {      
+      dispatch(toggle_loader(true)) 
+      if(isAuth && token) {  
+        dispatch(error("Already Login"))
+        history.push('/')
       }
+      else if(!token && !isAuth) {
+        dispatch(toggle_popup("modal_alert", true, false, false))        
+        history.push('/')
+      }
+      dispatch(toggle_loader(false))
+      // const payload = {}
+      // axios
+      // .post('/checkLogin', payload, config)
+      // .then((resp) => {
+      //   if (isAuth) {
+      //   } 
+      //   else dispatch(put_data('user_check', resp.data))
+      // })
+      // .catch((err) => {  
+      //   if (!isAuth) {          
+      //     history.push('/')
+      //     dispatch(toggle_popup("modal_alert", true, false, false))
+      //   }  
+      // })
+      // .then(() => {
+      //   dispatch(toggle_loader(false))
+      // });
+      // }
     };
+};
+export const logout = () => {
+  return (dispatch) => {
+    dispatch(toggle_loader(true))
+    setTimeout(() => {
+      ls.removeItem('token');
+      ls.removeItem('id_user');
+      ls.removeItem('name_user');
+      dispatch(toggle_loader(false))
+      window.location.href = `${process.env.REACT_APP_BASE_URL}`;      
+    }, 1500);
+  };
 };
 
-export const filter_research = (listRes, filtered) => {
-    return () => {      
-      if(filtered.includes('AZ')) {
-        let newData =  [].concat(listRes).sort((a, b) => a.articleTitle.toLowerCase() > b.articleTitle.toLowerCase() && a.downloadCount < b.downloadCount ? 1 : -1)        
-        console.log(newData)
-      }
-    };
+export const filter_research = (listRes) => {
+  return (dispatch) => {   
+    dispatch(toggle_loader(true)) 
+    const a = []
+    if (listRes.includes("MostRead")) {
+      a.push(["downloadCount", -1])      
+    }
+    if (listRes.includes("AZ")) {
+      a.push(["articleTitle", 1])      
+    }
+    if (listRes.includes("ZA")) {
+      a.push(["articleTitle", -1])      
+    }
+    if (listRes.includes("Newest")) {
+      a.push(["publicationDate", -1])      
+    }
+    if (listRes.includes("Oldest")) {
+      a.push(["publicationDate", 1])      
+    }
+
+    const payload = {
+        filter: a
+    }
+    console.log(payload)
+    axios
+      .post('/file/filterResearch', payload, config)
+      .then((resp) => {
+          dispatch(put_data('list_research', resp.data.result))
+      })
+      .catch((err) => {                       
+      })
+      .then(() => {
+        dispatch(toggle_loader(false))
+      });
+  };
 };
-export const get_profile = () => {
-    return (dispatch) => {   
-      dispatch(toggle_loader(true)) 
-      const payload = {
-          id: ls.id_user
-      }
-      axios
-        .post('/user/viewUser', payload, config)
-        .then((resp) => {
-            dispatch(put_data('profile_data', resp.data.dataUser))
-        })
-        .catch((err) => {                       
-        })
-        .then(() => {
-          dispatch(toggle_loader(false))
-        });
-    };
-};
+// export const get_profile = () => {
+//     return (dispatch) => {   
+//       dispatch(toggle_loader(true)) 
+//       const payload = {
+//           id: ls.id_user
+//       }
+//       axios
+//         .post('/user/viewUser', payload, config)
+//         .then((resp) => {
+//             dispatch(put_data('profile_data', resp.data.dataUser))
+//         })
+//         .catch((err) => {                       
+//         })
+//         .then(() => {
+//           dispatch(toggle_loader(false))
+//         });
+//     };
+// };
+
+// export const get_user_id = () => {
+//     return (dispatch) => {   
+//       dispatch(toggle_loader(true)) 
+//       const payload = {
+//           id: ls.id_user
+//       }
+//       axios
+//         .post('/user/getUser', payload, config)
+//         .then((resp) => {
+//             dispatch(put_data('user_data', resp.data.result))
+//         })
+//         .catch((err) => {
+//           dispatch(error(err))
+//         })
+//         .then(() => {
+//           dispatch(toggle_loader(false))
+//         });
+//     };
+// };
 
 export const get_user_research = () => {
     return (dispatch) => {    
@@ -110,7 +206,10 @@ export const post_data = (url, key) => {
         .post(url, payload, config)
         .then((resp) => {                        
             console.log(resp.data)
-            dispatch(put_data(key, resp.data))
+            dispatch(put_data(key, resp.data))            
+            if(resp.data?.result?.photoProfile) {
+              dispatch(put_data("url_avatar", resp.data?.result?.photoProfile))
+            }
         })
         .catch((err) => {
         })
@@ -150,32 +249,55 @@ export const post_login = (data, history) => {
             window.location.href = `${process.env.REACT_APP_BASE_URL}`;
         })
         .catch((err) => {   
-          console.log(err)
+          console.log(err?.response?.data)
+          dispatch(error(err?.response?.data))
         })
         .then(() => {
             dispatch(toggle_loader(false))               
         });
     };
 };
-export const post_register = (data) => {
-    return (dispatch) => {      
-        const payload = {
-            fullname: 'angga',
-            username: data.username,
-            password: data.password,
-            workStatus: "Teacher"
-        }
+export const post_register = (data, history) => {
+    return (dispatch) => {
+      dispatch(toggle_loader(true))      
+      const payload = {
+        fullName: data.fullname,
+        affiliation: data.affiliation,
+        email: data.email,
+        password: data.password,          
+      }      
       axios
         .post('/register', payload)
         .then((resp) => {                        
             console.log(resp.data)
             dispatch(put_data('posts', resp.data))
+            dispatch(success("Registeration Success"))
+            history.push('/login')
+        })
+        .catch((err) => {  
+          dispatch(error(err))
+        })
+        .then(() => {
+          dispatch(toggle_loader(false))
+        });
+    };
+};
+
+export const post_edit_user = (payload, history) => {
+    return (dispatch) => {
+      dispatch(toggle_loader(true))
+      axios
+        .put('/user/editUser', payload, config)
+        .then((resp) => {                        
+            console.log(resp.data)
+            history.push('/profile')
+            dispatch(success("Profil User Berhasil Diupdate"))
         })
         .catch((err) => {                       
         })
         .then(() => {
-          
-        });
+          dispatch(toggle_loader(false))
+        });      
     };
 };
 
@@ -183,57 +305,89 @@ export const get_waiting_research = () => {
     return (dispatch) => {          
         dispatch(toggle_loader(true))            
         axios
-            .get('/admin/waitResearch', config)
-            .then((resp) => {                        
-                console.log(resp.data)
-                dispatch(put_data('list_waiting_research', resp.data.result))
-            })
-            .catch((err) => {      
-                console.log(err)                 
-            })
-            .then(() => {
-                dispatch(toggle_loader(false))
-            });
+          .get('/admin/waitResearch', config)
+          .then((resp) => {                        
+              console.log(resp.data)
+              dispatch(put_data('list_waiting_research', resp.data.result))
+          })
+          .catch((err) => {      
+              console.log(err)                 
+          })
+          .then(() => {
+              dispatch(toggle_loader(false))
+          });
     };
 };
 
 export const get_research = () => {
     return (dispatch) => {          
-        dispatch(toggle_loader(true))            
+        dispatch(toggle_loader(true))
+        let idUser = ''
+        if(ls.id_user) {
+          idUser = ls.id_user
+        }         
+        const payload = {
+          id: idUser
+        }
         axios
-            .get('/file/research')
-            .then((resp) => {                        
-                console.log(resp.data)
-                dispatch(put_data('list_research', resp.data.result))
-            })
-            .catch((err) => {      
-                console.log(err)                 
-            })
-            .then(() => {
-                dispatch(toggle_loader(false))
-            });
+          .post('/file/research', payload)
+          .then((resp) => {                        
+              console.log(resp.data)
+              dispatch(put_data('list_research', resp.data.fileData))
+          })
+          .catch((err) => {      
+              console.log(err)                 
+          })
+          .then(() => {
+              dispatch(toggle_loader(false))
+          });
     };
 };
 
-export const post_user_research = () => {
-    return (dispatch) => {          
-        dispatch(toggle_loader(true))  
-        const payload = {
-          id: ls.id_user
-        }          
-        axios
-            .post('/user/getUserResearch', payload, config)
-            .then((resp) => {                        
-                console.log(resp.data)
-                dispatch(put_data('user_research', resp.data))
-            })
-            .catch((err) => {      
-                console.log(err)                 
-            })
-            .then(() => {
-                dispatch(toggle_loader(false))
-            });
-    };
+// export const post_user_research = () => {
+//     return (dispatch) => {          
+//         dispatch(toggle_loader(true))  
+//         const payload = {
+//           id: ls.id_user
+//         }          
+//         axios
+//             .post('/user/getUserResearch', payload, config)
+//             .then((resp) => {                        
+//                 console.log(resp.data)
+//                 dispatch(put_data('user_research', resp.data))
+//             })
+//             .catch((err) => {      
+//                 console.log(err)                 
+//             })
+//             .then(() => {
+//                 dispatch(toggle_loader(false))
+//             });
+//     };
+// };
+
+export const post_create_bookmark = (idResearch) => {
+  return (dispatch) => {          
+    dispatch(toggle_loader(true))  
+    const payload = {
+      idUser: ls.id_user,
+      idResearch
+    }          
+    axios
+      .post('/user/bookmarkResearch', payload, config)
+      .then((resp) => {                        
+        console.log(resp.data)
+        dispatch(success("Research Berhasil Ditambahkan ke Bookmark"))
+        dispatch(post_data("/user/viewUser", "profile_data"))
+        dispatch(post_data("/user/getAllBookmark", "bookmarks_data"))
+        dispatch(get_research())
+      })
+      .catch((err) => {      
+          console.log(err)                 
+      })
+      .then(() => {
+          dispatch(toggle_loader(false))
+      });
+  };
 };
 
 export const post_research_detail = (id) => {
@@ -255,6 +409,56 @@ export const post_research_detail = (id) => {
                 dispatch(toggle_loader(false))
             });
     };
+};
+export const delete_research = (id) => {
+    return (dispatch) => {          
+      dispatch(toggle_loader(true))  
+      const payload = {
+        id
+      }
+      axios
+        .post('/file/deleteResearch', payload, config)
+        .then((resp) => {
+          console.log(resp.data)
+          dispatch(success("Research Berhasil Dihapus"))
+          dispatch(post_data("/user/viewUser", "profile_data"))
+          dispatch(post_data("/user/getAllBookmark", "bookmarks_data"))
+          dispatch(get_research())
+        })
+        .catch((err) => {      
+          console.log(err)
+          dispatch(error("Ada error saat penghapusan"))          
+        })
+        .then(() => {
+          dispatch(toggle_loader(false))
+        });
+    };
+};
+
+export const delete_bookmark = (idResearch) => {
+  return (dispatch) => {          
+    dispatch(toggle_loader(true))  
+    const payload = {        
+      idUser: ls.id_user,
+      idResearch
+    }
+    axios
+      .post('/user/deleteBookmarks', payload, config)
+      .then((resp) => {
+        console.log(resp.data)
+        dispatch(success("Bookmark Berhasil Dihapus"))
+        dispatch(get_research())
+        dispatch(post_data("/user/viewUser", "profile_data"))
+        dispatch(post_data("/user/getAllBookmark", "bookmarks_data"))
+      })
+      .catch((err) => {      
+        console.log(err)
+        dispatch(error("Ada error saat penghapusan"))          
+      })
+      .then(() => {
+        dispatch(toggle_loader(false))
+      });
+  };
 };
 
 export const post_admin_research = (url, id) => {
@@ -331,6 +535,32 @@ export const post_research = (formValue, history) => {
             dispatch(put_data('posts_research', resp.data))
             dispatch(success(resp.data.msg))
             history.push('/profile')
+        })
+        .catch((err) => {      
+            console.log(err)                 
+        })
+        .then(() => {
+          dispatch(toggle_loader(false))
+        });
+    };
+};
+
+export const upload_photo = (file, payload, history) => {
+    return (dispatch) => {  
+      dispatch(toggle_loader(true))      
+      let data = new FormData();
+      let token = window.localStorage.token;      
+      data.append('photoProfile', file);      
+            
+      const config_form = {
+        headers: { Authorization: `Bearer ${token}`, 'content-type': 'multipart/form-data' }
+      };
+      axios
+        .put('/user/uploadProfile', data, config_form)
+        .then((resp) => {                        
+            console.log(resp.data)
+            dispatch(put_data("url_avatar", resp.data?.linkImage))            
+            dispatch(post_edit_user(payload, history))            
         })
         .catch((err) => {      
             console.log(err)                 

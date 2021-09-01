@@ -1,51 +1,55 @@
 @import '../../assets/scss/colors.scss';
 .register-container {
-    width: 70%;
-    .title {
-        display: flex;
-        align-items: center;
-        h1 {
-            font-size: 4vmin;
-            font-weight: 700;        
-            margin-right: 2vw;
-        }
-        img {
-            width: 4vmin;
-        }
+  width: 70%;
+  height: 100%;
+  .title {
+    display: flex;
+    align-items: center;
+    h1 {
+        font-size: 4vmin;
+        font-weight: 700;        
+        margin-right: 2vw;
     }
-    .desc {
-        font-size: 2.4vmin;
-        margin: 1vmin 0 3vmin;
+    img {
+        width: 4vmin;
     }
-    .ant-btn-round.ant-btn-lg {
-        height: 7vmin;
-    }
+  }
+  .desc {
+    font-size: 2.4vmin;
+    margin: 1vmin 0 3vmin;
+  }
+  .ant-btn-round.ant-btn-lg {
+    height: 7vmin;
+  }
+  input {
+    height: 7vmin;
+    border-radius: 24px;
+    padding: 0 2vw;
+  }
+  .ant-form-item {
+    margin-bottom: 2vmin;
+  }
+  .ant-input-password {
+    border-radius: 24px;
+    padding: 0 2vw;
     input {
         height: 7vmin;
-        border-radius: 24px;
-        padding: 0 2vw;
+        &:focus {
+            box-shadow: none !important;
+        }
+    }  
+  }
+  .regis-link {
+    text-align: center;
+  }
+  button {        
+    background: #48CAE4;
+    border-color: #48CAE4;
+    &:hover {
+      background: $rezearch-blue;                                
     }
-    .ant-form-item {
-        margin-bottom: 2vmin;
-    }
-    .ant-input-password {
-        border-radius: 24px;
-        padding: 0 2vw;
-        input {
-            height: 7vmin;
-            &:focus {
-                box-shadow: none !important;
-            }
-        }  
-    }
-    .regis-link {
-        text-align: center;
-    }
-    button {        
-        background: #48CAE4;
-        border-color: #48CAE4;
-    }
-    .ant-checkbox-wrapper {
-        color: $rezearch-grey;
-    }
+  }
+  .ant-checkbox-wrapper {
+    color: $rezearch-grey;
+  }
 }

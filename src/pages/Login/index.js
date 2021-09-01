@@ -7,7 +7,7 @@ import emoji from '../../assets/images/Emoji.png'
 import './Login.scss'
 import { Link, useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { post_login } from '../../redux/actions/main';
+import { check_login, post_login } from '../../redux/actions/main';
 
 const Login = () => {
     let history = useHistory()
@@ -15,10 +15,11 @@ const Login = () => {
     const [form] = Form.useForm();
     // const requiredMark = 'optional';
     const [, forceUpdate] = useState({}); // To disable submit button at the beginning.
-
+    
     useEffect(() => {
-        forceUpdate({});
-    }, []);
+      dispatch(check_login(history, true))
+      forceUpdate({});
+    }, [dispatch, history]);
     const onFinish = (values) => {
         dispatch(post_login(values, history))
     };

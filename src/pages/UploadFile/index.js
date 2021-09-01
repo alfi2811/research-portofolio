@@ -2,17 +2,13 @@ import React, { useEffect, useState } from 'react'
 import Navbar from '../../components/Navbar'
 // import DragnDrop from '../../components/DragnDrop'
 import './UploadFile.scss'
-import { Form, Input, Button, Upload, DatePicker } from 'antd';
+import { Form, Input, Button, Upload, DatePicker, Checkbox } from 'antd';
 import { FiUpload } from "react-icons/fi";
 import { UploadOutlined  } from '@ant-design/icons';
 import { useDispatch } from 'react-redux';
 import { post_research } from '../../redux/actions/main';
 import { useHistory } from 'react-router-dom';
-const normFile = (e) => {
-  console.log('Upload event:', e.file);
-  console.log('Upload event:', e.fileList);
-  console.log('Upload event:', e);
-  
+const normFile = (e) => {  
   if (Array.isArray(e)) {    
     return e;
   }
@@ -30,7 +26,8 @@ const UploadFile = () => {
     const [, forceUpdate] = useState({}); // To disable submit button at the beginning.        
 
     useEffect(() => {
-        forceUpdate({});
+      window.scrollTo(0, 0);
+      forceUpdate({});
     }, []);
     const onFinish = (values) => {        
         console.log('Received values of form: ', values);         
@@ -83,7 +80,11 @@ const UploadFile = () => {
                     <Form.Item name="desc" label="Description">
                         <Input.TextArea rows={6} />
                     </Form.Item>
-                    
+                    <Checkbox>
+                        I have reviewed and verified each file I am uploading. I have the right to share each
+                        file publicy and/or store a private copy accessible to me and the co-authors, 
+                        as applicable. By uploading this file, I agree to the Upload Conditions.
+                    </Checkbox>
                     <Form.Item shouldUpdate>
                         {() => (
                         <Button

@@ -14,6 +14,7 @@ import Main from './base/Main';
 import 'antd/dist/antd.css';
 import './assets/scss/index.scss';
 import 'react-responsive-modal/styles.css';
+import "animate.css"
 
 // SET REDUX STORE
 const store = createStore(

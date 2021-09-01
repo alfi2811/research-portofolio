@@ -15,7 +15,8 @@
         display: flex;
         align-items: center;
         margin-bottom: 3vmin;
-        .desc {   
+        .desc {            
+            flex-basis: 65%;
             margin-left: 1vw;     
             .nama {
                 font-size: 0.95em;
@@ -23,7 +24,8 @@
             }
             .institusi {
                 font-size: 0.75em;
-                color: $rezearch-gray;                
+                width: 90%;                
+                color: $rezearch-gray;
             }
         }
     }
@@ -41,10 +43,12 @@
             color: $rezearch-grey;
             font-size: 0.8em;
         }
-    }
-    a {
-        text-align: center;
-        display: block;
-        text-decoration: underline;
+    }    
+    .link {
+      cursor: pointer;
+      color: #48CAE4;
+      text-align: center;
+      display: block;
+      text-decoration: underline;
     }
 }

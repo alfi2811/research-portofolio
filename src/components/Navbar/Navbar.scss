@@ -10,6 +10,11 @@
     left: 0;
     z-index: 2;
     width: 100%;
+    .ant-row {
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
     .title {
         h1 {
             color: $rezearch-blue;
@@ -19,18 +24,25 @@
         img {
             width: 20vmin;
         }
-    }
+    }    
     .search {
         display: flex;
+        .ant-row {
+          width: 100%;
+        }
         .ant-form {
           width: 100%;
+          height: 100%;
+          .ant-row, .ant-col, .ant-form-item-control-input, .ant-form-item-control-input-content {
+            height: 100%;
+          }
           &-item {
             margin-bottom: 0;
           }
         }
         .ant-input-affix-wrapper {
             padding: 0 1.5vw;
-            height: 7vmin;
+            height: 100%;
             border-radius: 16px;
             background: #F6FCFE;
             border: 1px solid #F6FCFE;
@@ -41,35 +53,94 @@
             }
         }
         button {
-            margin-left: 2vw;
-            width: 5vw;
-            height: 100%;  
-            border-radius: 16px;          
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #F6FCFE;
-            border: none;
-            .anticon {
-                color: $rezearch-blue;
-            }
+          margin-left: 2vw;
+          width: 8vmin;
+          height: 100%;  
+          padding: 0 1vw;
+          border-radius: 16px;          
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: #F6FCFE;
+          border: none;
+          @media (max-width: 768px) {
+            width: 90%;
+          }
+          .anticon {
+              color: $rezearch-blue;
+          }
         }
     }
     .add-research {
+      width: 100%; 
+      padding-left: 2vw;
+      display: flex;
+      align-items: center;
+      button {
+        margin-right: 20px;      
+        color: white;            
         width: 100%; 
-        button {
-            display: flex;
-            align-items: center;
-            color: white;
-            padding: 0 2vw;
-            margin-left: 2vw;           
-            width: 100%; 
-            height: 100%;            
-            background: $rezearch-blue-2;
-            border: none;            
-            span {
-                margin-left: 1.5vw;
-            }
+        height: 100%;            
+        background: $rezearch-blue-2;
+        border: none;
+        
+        @media (max-width: 768px) {
+          width: unset;
+          span:last-child {
+            display: none;
+          }
         }
+      }
+      img {
+        width: 100%;
+        cursor: pointer;
+      }
     }
+  &-mobile {
+    display: none;
+    position: relative;
+    z-index: 2;
+    background: white;
+    padding: 16px 32px;
+    .row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .showing.sidebar {
+      transform: translateX(0); 
+    }
+    .sidebar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 40%;
+      background: white;
+      height: 100vh;
+      padding: 35px;
+      transform: translateX(-100vw); 
+      transition: all 1s;
+      .menu {
+        margin-top: 40px;
+        display: flex;
+        flex-direction: column;
+        &-item {
+          display: flex;
+          p {
+            font-size: 14px;
+            margin-left: 12px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 860px) {
+  .navbar-container {
+    display: none;
+    &-mobile {
+      display: block;
+    }
+  }
 }

@@ -3,6 +3,7 @@
     // background-color: $rezearch-blue;
     padding: 15vmin 0 6vmin;
     width: 100%;
+    font-size: 16px;
     .upload-form {
         margin: 0 auto;
         width: 80%;
@@ -14,7 +15,7 @@
             margin-bottom: 5vmin;
         }
         .ant-btn-round.ant-btn-lg {
-            height: 9vmin;
+            height: 3.5em;
             background: #48CAE4;
             border-color: #48CAE4;
         }
@@ -24,13 +25,18 @@
             width: 100%;
         }
         input {
-            height: 9vmin;
+            height: 3.7em;
             border-radius: 24px;
             padding: 0 2vw;
         }
         textarea {
             padding: 3vmin 2vw;
             border-radius: 24px;
+        }
+        .ant-checkbox-wrapper {
+          margin-bottom: 2em;
+          font-size: 16px;
+          color: #B4B4B4;
         }
         button {
             display: flex;

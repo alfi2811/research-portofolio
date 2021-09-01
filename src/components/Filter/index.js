@@ -13,7 +13,7 @@ const Filter = ({ researches }) => {
   }
   const handleFilter = () => {
     console.log(filtered)
-    dispatch(filter_research(researches, filtered))
+    dispatch(filter_research(filtered))
   }
   const options = [
       { label: 'Most Read', value: 'MostRead' },

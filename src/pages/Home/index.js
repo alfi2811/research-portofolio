@@ -30,7 +30,7 @@ const Home = () => {
     const profile = main?.profile_data.dataUser
     const handleClick = () => {
       if(!window.localStorage.token) {
-        dispatch(toggle_popup("modal_alert", true, false, false))        
+        dispatch(toggle_popup("modal_alert", true, false, false))
       }
     }
 
@@ -38,27 +38,27 @@ const Home = () => {
         <div style={{position: 'relative'}} onClick={handleClick}>
           <Navbar justLogo="false" />
           <Row className="home-container">
-            <Col span={5} className="filter">
+            <Col xs={0} sm={0} md={0} lg={5} xl={5} className="filter">
                 <Filter researches={posts} />
             </Col>
-            <Col span={13} className="content">
-              <Jumbtron />
-              <div className="list-post">
+            <Col xs={24} sm={24} md={24} lg={13} xl={13} className="content">
+              <Jumbtron />              
+              {
+                posts &&
+                <div className="list-post animate__animated animate__fadeInUp">
                   {
-                      posts && posts.map((post) => (
-                          <CardPost 
-                              key={post._id}
-                              author={post.author} 
-                              title={post.articleTitle} 
-                              date={post.publicationDate}
-                              downloader={post.downloadCount}
-                              id={post._id}                                                                        
-                          />
-                      ))
+                    posts && posts.map((post) => (
+                      <CardPost                       
+                        key={post._id}
+                        post={post}                        
+                        isUserRes={window.localStorage.id_user===post.uploaderID?true:false}
+                      />
+                    ))
                   }
-              </div>
+                </div>
+              }
             </Col>
-            <Col span={6} className="profile">
+            <Col xs={0} sm={0} md={0} lg={6} xl={6} className="profile">
               <Myprofile data={profile} />
             </Col>
           </Row>

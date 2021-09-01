@@ -1,13 +1,14 @@
 import React, { useEffect } from 'react'
 import { Avatar, Tabs, Row, Col } from 'antd'
 import { useDispatch, useSelector } from 'react-redux'
-import { check_login, post_research_detail, put_download_research } from '../../redux/actions/main'
+import { check_login, delete_bookmark, post_create_bookmark, post_research_detail, put_download_research } from '../../redux/actions/main'
 import { useHistory, useParams } from 'react-router-dom'
 import { format, parseISO } from "date-fns"
 
 import Navbar from '../../components/Navbar'
 import ava from '../../assets/images/profile.png'
 import Bookmark from '../../assets/images/bookmark.png'
+import BookmarkAct from '../../assets/images/Bookmark-Active.svg'
 import Calendar from '../../assets/images/Calendar.png'
 import Chart from '../../assets/images/Chart.png'
 import pdf from '../../assets/images/pdf.png'
@@ -31,19 +32,34 @@ const DetailResearch = () => {
     const dispatch = useDispatch()
     // const arr = [1,2,3,4,5]
     let history = useHistory()
-    let { id } = useParams();    
+    let { id } = useParams();   
+
     useEffect(() => {
       window.scrollTo(0, 0);
       dispatch(check_login(history))
-      dispatch(post_research_detail(id)) 
+      if(window.localStorage.token) {        
+        dispatch(post_research_detail(id)) 
+      }
     }, [dispatch, history, id])
+
+    const main = useSelector(state => state?.main)    
+    const detailRes = main?.detail_research    
+
     const changeFormat = (date, formatTgl) => {
       let newDate = format(parseISO(date), formatTgl)
       return newDate
     }
-    const main = useSelector(state => state?.main)    
-    const detailRes = main?.detail_research    
-    console.log(detailRes)
+    const handleBookmark = (id) => {
+      if(window.localStorage.token) {
+        if(detailRes?.status === "true") {
+          dispatch(delete_bookmark(id))
+        } 
+        else {
+          dispatch(post_create_bookmark(id))
+        }
+      }
+    }    
+
     // const [defaultPdfFile] = useState(detailRes?.fileLink)
     return (
         <div>
@@ -52,7 +68,7 @@ const DetailResearch = () => {
                 <div className="research-header">
                     <div className="title">
                         <h1>{ detailRes?.articleTitle }</h1>
-                        <img src={Bookmark} alt="" />
+                        <img src={ detailRes?.status === "true" ? BookmarkAct : Bookmark } onClick={() => handleBookmark(detailRes?._id)} alt="" />
                     </div>
                     <div className="statistic">        
                         <div>
