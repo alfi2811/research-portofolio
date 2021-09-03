@@ -45,8 +45,8 @@ const Profile = () => {
                 <h3>{ data?.role } at { data?.affiliation }</h3>
                 <div className="fields">
                   {
-                    data && data?.fields.map((dt) => (
-                      <p>{ dt }</p>                      
+                    data && data?.fields.map((dt, key) => (
+                      <p key={key}>{ dt }</p>
                     ))
                   }
                 </div>

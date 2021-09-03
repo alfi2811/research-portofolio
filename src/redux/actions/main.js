@@ -123,7 +123,8 @@ export const filter_research = (listRes) => {
     }
 
     const payload = {
-        filter: a
+        filter: a,
+        idUser: ls.id_user        
     }
     console.log(payload)
     axios
@@ -177,24 +178,24 @@ export const filter_research = (listRes) => {
 //     };
 // };
 
-export const get_user_research = () => {
-    return (dispatch) => {    
-      const payload = {
-          id: ls.id_user
-      }
-      axios
-        .post('/user/getUserResearch', payload, config)
-        .then((resp) => {                        
-            console.log(resp.data)
-            dispatch(put_data('user_research', resp.data.msg))
-        })
-        .catch((err) => {                       
-        })
-        .then(() => {
+// export const get_user_research = () => {
+//     return (dispatch) => {    
+//       const payload = {
+//           id: ls.id_user
+//       }
+//       axios
+//         .post('/user/getUserResearch', payload, config)
+//         .then((resp) => {                        
+//             console.log(resp.data)
+//             dispatch(put_data('user_research', resp.data.msg))
+//         })
+//         .catch((err) => {                       
+//         })
+//         .then(() => {
           
-        });
-    };
-};
+//         });
+//     };
+// };
 
 export const post_data = (url, key) => {
     return (dispatch) => {
@@ -378,8 +379,8 @@ export const post_create_bookmark = (idResearch) => {
         console.log(resp.data)
         dispatch(success("Research Berhasil Ditambahkan ke Bookmark"))
         dispatch(post_data("/user/viewUser", "profile_data"))
-        dispatch(post_data("/user/getAllBookmark", "bookmarks_data"))
-        dispatch(get_research())
+        dispatch(post_data("/user/getAllBookmark", "bookmarks_data"))        
+        dispatch(get_research())        
       })
       .catch((err) => {      
           console.log(err)                 
@@ -394,13 +395,14 @@ export const post_research_detail = (id) => {
     return (dispatch) => {          
         dispatch(toggle_loader(true))  
         const payload = {
-          id
+          id,
+          idUser: ls.id_user,
         }
         axios
             .post('/file/getDetailResearch', payload, config)
             .then((resp) => {                        
                 console.log(resp.data)
-                dispatch(put_data('detail_research', resp.data.result[0]))
+                dispatch(put_data('detail_research', resp.data.result))
             })
             .catch((err) => {      
                 console.log(err)                 
@@ -449,7 +451,7 @@ export const delete_bookmark = (idResearch) => {
         dispatch(success("Bookmark Berhasil Dihapus"))
         dispatch(get_research())
         dispatch(post_data("/user/viewUser", "profile_data"))
-        dispatch(post_data("/user/getAllBookmark", "bookmarks_data"))
+        dispatch(post_data("/user/getAllBookmark", "bookmarks_data"))        
       })
       .catch((err) => {      
         console.log(err)
@@ -550,6 +552,7 @@ export const upload_photo = (file, payload, history) => {
       dispatch(toggle_loader(true))      
       let data = new FormData();
       let token = window.localStorage.token;      
+      data.append('id', ls.id_user);      
       data.append('photoProfile', file);      
             
       const config_form = {

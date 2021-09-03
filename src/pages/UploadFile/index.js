@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Navbar from '../../components/Navbar'
 // import DragnDrop from '../../components/DragnDrop'
 import './UploadFile.scss'
-import { Form, Input, Button, Upload, DatePicker, Checkbox } from 'antd';
+import { Form, Input, Button, Upload, DatePicker, Checkbox, message  } from 'antd';
 import { FiUpload } from "react-icons/fi";
 import { UploadOutlined  } from '@ant-design/icons';
 import { useDispatch } from 'react-redux';
@@ -33,6 +33,12 @@ const UploadFile = () => {
         console.log('Received values of form: ', values);         
         dispatch(post_research(values, history))
     };
+    const handleType = (file) => {        
+      if (file.type !== 'application/pdf') {
+        message.error(`${file.name} is not a pdf file`);
+      }
+      return file.type === 'application/pdf' ? false : Upload.LIST_IGNORE;
+    };
 
     return (
         <div>
@@ -47,8 +53,8 @@ const UploadFile = () => {
                     >
                     {/* <DragnDrop />   */}
                     <Form.Item>
-                        <Form.Item name="dragger" multiple={false} valuePropName="fileList" getValueFromEvent={normFile} noStyle>
-                          <Upload.Dragger name="files" beforeUpload={() => false} multiple="false" >
+                        <Form.Item name="dragger" valuePropName="fileList" getValueFromEvent={normFile} noStyle>
+                          <Upload.Dragger name="files" beforeUpload={(file) => handleType(file)} maxCount={1} >
                               <p className="ant-upload-drag-icon">
                                 <UploadOutlined />
                               </p>
@@ -56,35 +62,120 @@ const UploadFile = () => {
                           </Upload.Dragger>
                         </Form.Item>
                     </Form.Item>               
-                    <Form.Item label="Title" name="title">
+                    <Form.Item 
+                      label="Title" 
+                      name="title"
+                      required={false}
+                      rules={[
+                        {
+                          required: true,
+                          message: 'Please input your email!',
+                        },
+                      ]}
+                    >
                         <Input />
                     </Form.Item>
-                    <Form.Item label="Authors" name="authors">
-                        <Input />
+                    <Form.Item 
+                      label="Authors" 
+                      name="authors" 
+                      initialValue={window.localStorage.name_user} 
+                    >
+                        <Input disabled />
                     </Form.Item>
-                    <Form.Item label="Publication Date" name="publicationDate">
+                    <Form.Item 
+                      label="Publication Date" 
+                      name="publicationDate"
+                      required={false}
+                      rules={[
+                        {
+                          required: true,
+                          message: 'Please input your email!',
+                        },
+                      ]}
+                    >
                         <DatePicker />
                     </Form.Item>
-                    <Form.Item label="Journal" name="journal">
+                    <Form.Item 
+                      label="Journal" 
+                      name="journal"
+                      required={false}
+                      rules={[
+                        {
+                          required: true,
+                          message: 'Please input your email!',
+                        },
+                      ]}
+                    >
                         <Input />
                     </Form.Item>
-                    <Form.Item label="Volume" name="volume">
+                    <Form.Item 
+                      label="Volume" 
+                      name="volume"
+                      required={false}
+                      rules={[
+                        {
+                          required: true,
+                          message: 'Please input your email!',
+                        },
+                      ]}
+                    >
                         <Input />
                     </Form.Item>
-                    <Form.Item label="No / Issue" name="no">
+                    <Form.Item 
+                      label="No / Issue" 
+                      name="no"
+                      required={false}
+                      rules={[
+                        {
+                          required: true,
+                          message: 'Please input your email!',
+                        },
+                      ]}
+                    >
                         <Input />
                     </Form.Item>
-                    <Form.Item label="Pages" name="pages">
+                    <Form.Item 
+                      label="Pages" 
+                      name="pages"
+                      required={false}
+                      rules={[
+                        {
+                          required: true,
+                          message: 'Please input your email!',
+                        },
+                      ]}
+                    >
                         <Input />
                     </Form.Item>    
-                    <Form.Item name="desc" label="Description">
+                    <Form.Item 
+                      name="desc" 
+                      label="Description"
+                      required={false}
+                      rules={[
+                        {
+                          required: true,
+                          message: 'Please input your email!',
+                        },
+                      ]}
+                    >
                         <Input.TextArea rows={6} />
+                    </Form.Item>                    
+                    <Form.Item
+                      name="agreement"
+                      valuePropName="checked"
+                      rules={[
+                      {
+                        validator: (_, value) =>
+                        value ? Promise.resolve() : Promise.reject(new Error('Should accept agreement')),
+                      },
+                      ]}
+                    >
+                        <Checkbox>
+                          I have reviewed and verified each file I am uploading. I have the right to share each
+                          file publicy and/or store a private copy accessible to me and the co-authors, 
+                          as applicable. By uploading this file, I agree to the Upload Conditions.
+                        </Checkbox>
                     </Form.Item>
-                    <Checkbox>
-                        I have reviewed and verified each file I am uploading. I have the right to share each
-                        file publicy and/or store a private copy accessible to me and the co-authors, 
-                        as applicable. By uploading this file, I agree to the Upload Conditions.
-                    </Checkbox>
                     <Form.Item shouldUpdate>
                         {() => (
                         <Button
@@ -93,10 +184,10 @@ const UploadFile = () => {
                             type="primary"
                             htmlType="submit"
                             icon={<FiUpload fontSize="3vmin" />}
-                            disabled={
-                            !form.isFieldsTouched(true) ||
-                            !!form.getFieldsError().filter(({ errors }) => errors.length).length
-                            }                                
+                            // disabled={
+                            // !form.isFieldsTouched(true) ||
+                            // !!form.getFieldsError().filter(({ errors }) => errors.length).length
+                            // }
                         >
                             Upload File
                         </Button>

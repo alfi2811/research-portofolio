@@ -6,7 +6,6 @@ import { useHistory, useParams } from 'react-router-dom'
 import { format, parseISO } from "date-fns"
 
 import Navbar from '../../components/Navbar'
-import ava from '../../assets/images/profile.png'
 import Bookmark from '../../assets/images/bookmark.png'
 import BookmarkAct from '../../assets/images/Bookmark-Active.svg'
 import Calendar from '../../assets/images/Calendar.png'
@@ -49,14 +48,15 @@ const DetailResearch = () => {
       let newDate = format(parseISO(date), formatTgl)
       return newDate
     }
-    const handleBookmark = (id) => {
+    const handleBookmark = async (id) => {
       if(window.localStorage.token) {
         if(detailRes?.status === "true") {
-          dispatch(delete_bookmark(id))
+          await dispatch(delete_bookmark(id))
         } 
         else {
-          dispatch(post_create_bookmark(id))
+          await dispatch(post_create_bookmark(id))
         }
+        dispatch(post_research_detail(id))
       }
     }    
 
@@ -68,7 +68,7 @@ const DetailResearch = () => {
                 <div className="research-header">
                     <div className="title">
                         <h1>{ detailRes?.articleTitle }</h1>
-                        <img src={ detailRes?.status === "true" ? BookmarkAct : Bookmark } onClick={() => handleBookmark(detailRes?._id)} alt="" />
+                        <img src={ detailRes?.status === "true" ? BookmarkAct : Bookmark } onClick={async () => await handleBookmark(detailRes?._id)} alt="" />
                     </div>
                     <div className="statistic">        
                         <div>
@@ -85,11 +85,11 @@ const DetailResearch = () => {
                         <div className="author">        
                             <Avatar
                                 size={{ xs: 5, sm: 15, md: 20, lg: 44, xl: 50, xxl: 90 }}
-                                src={ava}         
+                                src={detailRes?.uploaderInfo?.photoProfile}         
                             />
                             <div className="desc">
-                                <p className="nama">{ detailRes?.author }</p>
-                                <p className="institusi">Telkom</p>
+                                <p className="nama">{ detailRes?.uploaderInfo?.fullName }</p>
+                                <p className="institusi">{ detailRes?.uploaderInfo?.affiliation }</p>
                             </div>
                         </div>                        
                     </div>
