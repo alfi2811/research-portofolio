@@ -9,7 +9,7 @@ const Myprofile = ({ data }) => {
   let history = useHistory()
   const handleClick = () => {    
     if(window.localStorage.token) {
-      history.push('/profile')
+      history.push(`/profile/${window.localStorage.id_user}`)
     }
   }
   return (

@@ -33,6 +33,13 @@
         font-family: 'Lato';
         background: $rezearch-grey-2;
         border-color: $rezearch-grey-2;
+        border-radius: 15px;
+        text-shadow: none;
+        box-shadow: none;
+        &:hover {
+          background: $rezearch-blue-2;
+          color: #FFFFFF;
+        }
       }
     }
     .right {

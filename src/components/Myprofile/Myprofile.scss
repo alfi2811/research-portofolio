@@ -19,13 +19,12 @@
             flex-basis: 65%;
             margin-left: 1vw;     
             .nama {
-                font-size: 0.95em;
-                color: black;                
+              font-size: 0.95em;             
             }
             .institusi {
-                font-size: 0.75em;
-                width: 90%;                
-                color: $rezearch-gray;
+              font-size: 0.75em;
+              width: 90%;                
+              color: $rezearch-gray;
             }
         }
     }
@@ -46,7 +45,7 @@
     }    
     .link {
       cursor: pointer;
-      color: #48CAE4;
+      color: $rezearch-blue-2;
       text-align: center;
       display: block;
       text-decoration: underline;

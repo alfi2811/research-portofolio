@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom'
 import { Link } from 'react-router-dom';
 import './EditUser.scss'
 import { useDispatch, useSelector } from 'react-redux';
-import { post_data, check_login, post_edit_user, upload_photo } from '../../redux/actions/main';
+import { post_data, check_login, post_edit_user, upload_photo, put_data } from '../../redux/actions/main';
 // import UploadPhoto from '../../components/UploadPhoto';
 
 const { Option } = Select;
@@ -43,10 +43,11 @@ const EditUser = () => {
     else {
       dispatch(post_edit_user(values, history))    
     }
+    dispatch(put_data('user_data', false))
   };
   const main = useSelector(state => state?.main)
   const data = main?.user_data?.result
-  
+  console.log(data)
   return (
     <div className="edit-container">
       <Link to="/profile">

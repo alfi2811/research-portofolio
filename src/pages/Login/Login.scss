@@ -1,52 +1,56 @@
 @import '../../assets//scss/colors.scss';
 .login-container {
-    width: 60%;    
-    .title {
-        display: flex;
-        align-items: center;
-        h1 {
-            font-size: 4.5vmin;
-            font-weight: 700;        
-            margin-right: 2vw;
-        }
-        img {
-            width: 4.5vmin;
-        }
+  width: 60%;
+  .title {
+      display: flex;
+      align-items: center;
+    h1 {
+      font-size: 4.5vmin;
+      font-weight: 700;        
+      margin-right: 2vw;
     }
-    .desc {
-        font-size: 2.4vmin;
-        margin: 1vmin 0 5vmin;
+    img {
+      width: 4.5vmin;
     }
-    .ant-btn-round.ant-btn-lg {
-        height: 8vmin;
-    }
+  }
+  .desc {
+    font-size: 2.4vmin;
+    margin: 1vmin 0 5vmin;
+  }
+  .ant-btn-round.ant-btn-lg {
+    height: 8vmin;
+  }
+  input {
+    height: 3.5rem;
+    border-radius: 24px;
+    padding: 0 24px;
+    border: 1px solid #CAF0F8;
+  }
+  .ant-input-password {
+    border-radius: 24px;
+    padding: 0 24px;
+    border: 1px solid #CAF0F8;
     input {
       height: 3.5rem;
-      border-radius: 24px;
-      padding: 0 24px;
-      border: 1px solid #b1effc;
+      &:focus {
+        box-shadow: none !important;
+      }
     }
-    .ant-input-password {
-      border-radius: 24px;
-      padding: 0 24px;
-      border: 1px solid #b1effc;
-      input {
-          height: 3.5rem;
-          &:focus {
-              box-shadow: none !important;
-          }
-      }  
+  }
+  .ant-row .ant-form-item-label > label {
+    color: $rezearch-grey;
+    font-size: 1rem;
+  }
+  .regis-link {
+    text-align: center;
+  }
+  button {
+    margin-top: 4vmin;
+    background: $rezearch-blue-2;
+    border-color: $rezearch-blue-2;
+    &:hover {
+      background: $rezearch-blue;
+      color: white;
     }
-    .ant-row .ant-form-item-label > label {
-        color: $rezearch-grey;
-        font-size: 1rem;
-    }
-    .regis-link {
-        text-align: center;
-    }
-    button {
-        margin-top: 4vmin;
-        background: #48CAE4;
-        border-color: #48CAE4;
-    }
+  }
 }

@@ -1,38 +1,40 @@
 @import '../../assets/scss/colors.scss';
 
 .jumbotron-container {
-    background-color: white;
-    font-size: 16px;
-    padding: 2em 2.4em 3em;
-    position: relative;
-    border-radius: 16px;
-    h1 {
-        font-size: 1.5em;
-        font-weight: bold;
+  background-color: white;
+  font-size: 16px;
+  padding: 2em 2.4em 3em;
+  position: relative;
+  border-radius: 16px;
+  h1 {
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+  h2.desc {
+    margin: 4px 0 20px;
+    color: $rezearch-gray;
+    font-weight: 400;
+    font-size: 1.25em;
+  }
+  p.text {
+    width: 58%;
+    font-size: 0.9em;
+    margin-bottom: 32px;
+    color: $rezearch-gray;
+  }
+  .illustration {
+    position: absolute;
+    right: 0;
+    bottom: 2vmin;
+    width: 40%;
+    max-width: 250px;
+    img {
+        width: 100%;
     }
-    h2.desc {
-        margin: 1vmin 0 3vmin;
-        color: $rezearch-gray;
-        font-weight: 400;
-        font-size: 1em;
-    }
-    p.text {
-        width: 58%;
-        margin-bottom: 5vmin;
-    }
-    .illustration {
-        position: absolute;
-        right: 0;
-        bottom: 2vmin;
-        width: 40%;
-        max-width: 250px;
-        img {
-            width: 100%;
-        }
-    }
-    .button-blue.ant-btn {
-        border-radius: 24px;
-        height: 50px;
-        padding: 0 2vw;
-    }
+  }
+  .button-blue.ant-btn {
+    border-radius: 24px;
+    height: 50px;
+    padding: 0 2vw;
+  }
 }

@@ -132,31 +132,33 @@ export const filter_research = (listRes) => {
       .then((resp) => {
           dispatch(put_data('list_research', resp.data.result))
       })
-      .catch((err) => {                       
+      .catch((err) => {
+        dispatch(error(err?.response?.data))
       })
       .then(() => {
         dispatch(toggle_loader(false))
       });
   };
 };
-// export const get_profile = () => {
-//     return (dispatch) => {   
-//       dispatch(toggle_loader(true)) 
-//       const payload = {
-//           id: ls.id_user
-//       }
-//       axios
-//         .post('/user/viewUser', payload, config)
-//         .then((resp) => {
-//             dispatch(put_data('profile_data', resp.data.dataUser))
-//         })
-//         .catch((err) => {                       
-//         })
-//         .then(() => {
-//           dispatch(toggle_loader(false))
-//         });
-//     };
-// };
+export const post_view_user = (id) => {
+  return (dispatch) => {   
+    dispatch(toggle_loader(true)) 
+    const payload = {
+        id
+    }
+    axios
+      .post('/user/viewUser', payload, config)
+      .then((resp) => {
+        dispatch(put_data('profile_data', resp.data))
+      })
+      .catch((err) => {                       
+        dispatch(error(err?.response?.data))
+      })
+      .then(() => {
+        dispatch(toggle_loader(false))
+      });
+  };
+};
 
 // export const get_user_id = () => {
 //     return (dispatch) => {   
@@ -213,6 +215,7 @@ export const post_data = (url, key) => {
             }
         })
         .catch((err) => {
+          dispatch(error(err?.response?.data))
         })
         .then(() => {
           dispatch(toggle_loader(false))
@@ -220,21 +223,22 @@ export const post_data = (url, key) => {
     };
 };
 
-export const get_data = (url, key) => {
-    return (dispatch) => {      
-      axios
-        .get(url, config)
-        .then((resp) => {                        
-            console.log(resp.data)
-            dispatch(put_data(key, resp.data))
-        })
-        .catch((err) => {                       
-        })
-        .then(() => {
+// export const get_data = (url, key) => {
+//     return (dispatch) => {      
+//       axios
+//         .get(url, config)
+//         .then((resp) => {                        
+//             console.log(resp.data)
+//             dispatch(put_data(key, resp.data))
+//         })
+//         .catch((err) => {       
+//           dispatch(error(err?.response?.data))                
+//         })
+//         .then(() => {
           
-        });
-    };
-};
+//         });
+//     };
+// };
 
 
 export const post_login = (data, history) => {
@@ -246,7 +250,7 @@ export const post_login = (data, history) => {
             ls.setItem('token', resp.data.token);
             ls.setItem('id_user', resp.data?.payload[0]?.id);
             ls.setItem('name_user', resp.data?.payload[0]?.fullname);
-            dispatch(put_data('user_data', resp.data))            
+            dispatch(put_data('user_data', resp.data));
             window.location.href = `${process.env.REACT_APP_BASE_URL}`;
         })
         .catch((err) => {   
@@ -276,7 +280,7 @@ export const post_register = (data, history) => {
             history.push('/login')
         })
         .catch((err) => {  
-          dispatch(error(err))
+          dispatch(error(err?.response?.data))
         })
         .then(() => {
           dispatch(toggle_loader(false))
@@ -291,10 +295,12 @@ export const post_edit_user = (payload, history) => {
         .put('/user/editUser', payload, config)
         .then((resp) => {                        
             console.log(resp.data)
+            ls.setItem('name_user', payload.fullname);
             history.push('/profile')
             dispatch(success("Profil User Berhasil Diupdate"))
         })
-        .catch((err) => {                       
+        .catch((err) => {
+          dispatch(error(err?.response?.data))
         })
         .then(() => {
           dispatch(toggle_loader(false))
@@ -379,7 +385,8 @@ export const post_create_bookmark = (idResearch) => {
         console.log(resp.data)
         dispatch(success("Research Berhasil Ditambahkan ke Bookmark"))
         dispatch(post_data("/user/viewUser", "profile_data"))
-        dispatch(post_data("/user/getAllBookmark", "bookmarks_data"))        
+        dispatch(post_data("/user/getAllBookmark", "bookmarks_data"))
+        dispatch(post_research_detail(idResearch))
         dispatch(get_research())        
       })
       .catch((err) => {      
@@ -452,6 +459,7 @@ export const delete_bookmark = (idResearch) => {
         dispatch(get_research())
         dispatch(post_data("/user/viewUser", "profile_data"))
         dispatch(post_data("/user/getAllBookmark", "bookmarks_data"))        
+        dispatch(post_research_detail(idResearch))
       })
       .catch((err) => {      
         console.log(err)

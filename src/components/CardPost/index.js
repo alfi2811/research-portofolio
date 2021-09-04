@@ -51,17 +51,21 @@ const CardPost = ({ post, isUserRes }) => {
       }
     }
   }
+
+  const handleProfile = (id) => {
+    if(window.localStorage.token) {
+      history.push(`/profile/${post.uploaderInfo._id}`)      
+    }
+  }
   const handleShare = () => {      
     const newInput = document.createElement("INPUT")
     newInput.setAttribute("type", "text")
     newInput.setAttribute("value", `${process.env.REACT_APP_BASE_URL}detail-research/${post._id}`)
     document.body.appendChild(newInput)
-
-    // select the field
+    
     newInput.select()
     newInput.setSelectionRange(0, 99999) /*For mobile devices*/
 
-    /* Copy the text inside the text field */
     document.execCommand("copy")
     newInput.remove()      
   }
@@ -75,7 +79,7 @@ const CardPost = ({ post, isUserRes }) => {
                   src={ post.uploaderInfo.photoProfile }         
               />
               <div className="desc">
-                  <p className="nama">{ post.uploaderInfo.fullName }</p>
+                  <p className="nama" onClick={handleProfile}>{ post.uploaderInfo.fullName }</p>
                   <p className="institusi">{ post.uploaderInfo.affiliation }</p>
               </div>
             </div>

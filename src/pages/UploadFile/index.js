@@ -6,7 +6,7 @@ import { Form, Input, Button, Upload, DatePicker, Checkbox, message  } from 'ant
 import { FiUpload } from "react-icons/fi";
 import { UploadOutlined  } from '@ant-design/icons';
 import { useDispatch } from 'react-redux';
-import { post_research } from '../../redux/actions/main';
+import { check_login, post_research } from '../../redux/actions/main';
 import { useHistory } from 'react-router-dom';
 const normFile = (e) => {  
   if (Array.isArray(e)) {    
@@ -27,8 +27,9 @@ const UploadFile = () => {
 
     useEffect(() => {
       window.scrollTo(0, 0);
+      dispatch(check_login(history))
       forceUpdate({});
-    }, []);
+    }, [dispatch, history]);    
     const onFinish = (values) => {        
         console.log('Received values of form: ', values);         
         dispatch(post_research(values, history))

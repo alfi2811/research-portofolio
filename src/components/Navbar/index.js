@@ -1,7 +1,6 @@
 import React, {useState} from 'react'
 import { Button, Col, Row, Form, Menu, Dropdown, Input, Avatar, Divider } from 'antd'
 import { RiSearch2Line } from "react-icons/ri";
-import { MdBookmark } from "react-icons/md";
 import { PlusCircleOutlined, LogoutOutlined  } from '@ant-design/icons';
 import { Link, useHistory } from 'react-router-dom'
 
@@ -10,7 +9,8 @@ import Down from '../../assets/images/down.svg'
 import MenuMobile from '../../assets/images/menu.svg'
 import Title from '../../assets/images/title.svg'
 import Plus from '../../assets/images/Plus.svg'
-import Close from '../../assets/images/close.svg'
+import Close from '../../assets/images/Close.svg'
+import bookmark from '../../assets/images/navbar-bookmark.svg'
 import anon from '../../assets/images/anon.png'
 import './Navbar.scss'
 import { useDispatch } from 'react-redux';
@@ -40,9 +40,9 @@ const Navbar = ({justLogo}) => {
       <div className="navbar-container">
         <Row>
           <Col span={5} className="title">
-              <Link to="/">
-                  <img src={Logo} alt="" />
-              </Link>
+            <Link to="/">
+                <img src={Logo} alt="" />
+            </Link>
           </Col>
           {
             justLogo === true?
@@ -57,12 +57,17 @@ const Navbar = ({justLogo}) => {
                       onFinish={handleKeyPress}                  
                     >
                       <Form.Item name="key">
-                        <Input placeholder="Find your favorite journal research" name="search" prefix={<RiSearch2Line color="#48CAE4" size="1.5vw" />} />
+                        <Input placeholder="Find your favorite journal research" name="search" prefix={<RiSearch2Line color="#48CAE4" size="16px" />} />
                       </Form.Item>
                     </Form>
                   </Col>
                   <Col xs={10} sm={4} md={4} lg={4} xl={4}>
-                    <Button type="primary" icon={<MdBookmark color="#48CAE4" size="2vw" />} size="large" onClick={() => handleClick('/bookmark')} />
+                    <Button 
+                      type="primary" 
+                      icon={<img src={bookmark} alt="btn bookmark" />} 
+                      size="large" 
+                      onClick={() => handleClick('/bookmark')} 
+                    />
                   </Col>
                 </Row>
               </Col>
@@ -94,25 +99,43 @@ const Navbar = ({justLogo}) => {
       <div className="navbar-container-mobile">
         <div className="row">
           <img src={MenuMobile} onClick={() => setIsClose(false)} alt="" />
-          <img src={Title} alt="" />
+          <img src={Title} className="title" alt="" />
           <Avatar
             size={{ xs: 30, sm: 30, md: 32, lg: 32, xl: 32, xxl: 30 }}
             src={anon}
           />
         </div>
+        <div className="row">
+          <Form
+            name="basic"
+            onFinish={handleKeyPress}                  
+          >
+            <Form.Item name="key">
+              <Input placeholder="Find your favorite journal research" name="search" prefix={<RiSearch2Line color="#48CAE4" size="16px" />} />
+            </Form.Item>
+          </Form>
+        </div>
         <div className={isClose? "sidebar" : "sidebar showing"}>
           <img src={Close} onClick={() => setIsClose(true)} alt="" />
 
           <div className="menu">
-            <div className="menu-item">
+            <div className="menu-item" onClick={() => handleClick('/upload')}>
               <img src={Plus} alt="" />
-              <p>Add Research</p>
+              <p>Add New Research</p>
             </div>
             <Divider />
-            <div className="menu-item">
-              <img src={Plus} alt="" />
-              <p>Add Research</p>
+            <div className="menu-item" onClick={() => handleClick('/bookmark')} >
+              <img src={bookmark} alt="" />
+              <p>Bookmark</p>
             </div>
+            <Divider />
+            {
+              window.localStorage.token && 
+              <div className="menu-item" style={{color: 'red'}} onClick={() => dispatch(logout())}>
+                <LogoutOutlined />
+                <p>Logout</p>
+              </div>
+            }
           </div>
         </div>
 
