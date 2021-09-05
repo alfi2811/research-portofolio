@@ -33,6 +33,7 @@
     border: 1px solid #CAF0F8;
     input {
       height: 3.5em;
+      border-color: transparent;
       &:focus {
         box-shadow: none !important;
       }
