@@ -10,7 +10,7 @@ import './LayoutLogRes.scss'
 const LayoutLogRes = ({children, person}) => {
     return (
         <Row className="layout-container">
-            <Col span={12} className="left">
+            <Col xs={0} sm={0} md={0} lg={12} xl={12} className="left">
                 <div className="person-img">
                     <img src={person} alt="orang" />
                     <img className="resp resp-1" src={iconMsg} alt="orang" />
@@ -19,7 +19,7 @@ const LayoutLogRes = ({children, person}) => {
                     <img className="resp resp-4" src={iconPen} alt="orang" />
                 </div>
             </Col>
-            <Col span={12} className="right">{children}</Col>
+            <Col xs={24} sm={24} md={24} lg={12} xl={12} className="right">{children}</Col>
         </Row>
     )
 }

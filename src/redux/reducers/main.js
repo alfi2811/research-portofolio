@@ -3,9 +3,10 @@ const main_state = {
 	user_data: false,
 	list_research: false,
 	profile_data: false,
-	loader: false,
+  profile_navbar: false,
   detail_research: false,
   url_avatar: false,
+	loader: false,
 
   modal_msg: false,
   modal_data: false,

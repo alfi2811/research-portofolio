@@ -23,12 +23,12 @@ const Navbar = ({justLogo}) => {
   let ls = window.localStorage  
   useEffect(() => {    
     if(ls.token) {
-      dispatch(post_data("/user/viewUser", "profile_data"))
+      dispatch(post_data("/user/viewUser", "profile_navbar"))
     }
   }, [dispatch, ls.token])
 
   const main = useSelector(state => state?.main)  
-  const profile = main?.profile_data.dataUser?.photoProfile
+  const profile = main?.profile_navbar?.dataUser?.photoProfile
   
   const handleKeyPress = (value) => {            
     dispatch(search_research(value.key))
