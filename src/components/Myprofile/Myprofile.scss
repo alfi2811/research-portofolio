@@ -1,53 +1,53 @@
 @import '../../assets/scss/colors.scss';
 
 .myprofile-container {
-    background: white;
-    padding: 3vmin 2vw;
-    margin-left: auto;
-    border-radius: 16px;
-    font-size: 16px;
-    .title {
-        font-size: 1.5vw;
-        font-weight: bold;
-        margin-bottom: 3vmin;
+  background: white;
+  font-size: 16px;
+  padding: 1.5em 2em;
+  margin-left: auto;
+  border-radius: 16px;
+  .title {
+    font-size: 1.25em;
+    font-weight: bold;
+    margin-bottom: 24px;
+  }
+  .person {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5em;
+    .desc {            
+      flex-basis: 65%;
+      margin-left: 0.8em;
+      .nama {
+        font-size: 0.95em;             
+      }
+      .institusi {
+        font-size: 0.75em;
+        width: 90%;                
+        color: $rezearch-gray;
+      }
     }
-    .person {
-        display: flex;
-        align-items: center;
-        margin-bottom: 3vmin;
-        .desc {            
-            flex-basis: 65%;
-            margin-left: 1vw;     
-            .nama {
-              font-size: 0.95em;             
-            }
-            .institusi {
-              font-size: 0.75em;
-              width: 90%;                
-              color: $rezearch-gray;
-            }
-        }
-    }
-    .statistik {        
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 3vmin;
-        p {
-            text-align: center;
-        }
-        .total {
-            font-size: 1.3em;
-        }
-        .nama {
-            color: $rezearch-grey;
-            font-size: 0.8em;
-        }
-    }    
-    .link {
-      cursor: pointer;
-      color: $rezearch-blue-2;
+  }
+  .statistik {        
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.5em;
+    p {
       text-align: center;
-      display: block;
-      text-decoration: underline;
     }
+    .total {
+      font-size: 1.3em;
+    }
+    .nama {
+      color: $rezearch-grey;
+      font-size: 0.8em;
+    }
+  }    
+  .link {
+    cursor: pointer;
+    color: $rezearch-blue-2;
+    text-align: center;
+    display: block;
+    text-decoration: underline;
+  }
 }

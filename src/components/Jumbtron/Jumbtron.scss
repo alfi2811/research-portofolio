@@ -19,13 +19,13 @@
   p.text {
     width: 58%;
     font-size: 0.9em;
-    margin-bottom: 32px;
+    margin-bottom: 2em;
     color: $rezearch-gray;
   }
   .illustration {
     position: absolute;
     right: 0;
-    bottom: 2vmin;
+    bottom: 1.5em;
     width: 40%;
     max-width: 250px;
     img {
@@ -34,7 +34,7 @@
   }
   .button-blue.ant-btn {
     border-radius: 24px;
-    height: 50px;
+    height: 3.2em;
     padding: 0 2vw;
   }
 }

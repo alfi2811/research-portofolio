@@ -35,37 +35,37 @@ const Home = () => {
     }
 
     return (
-        <div style={{position: 'relative'}} onClick={handleClick}>
-          <Navbar justLogo="false" />
-          <Row className="home-container">
-            <Col xs={0} sm={0} md={0} lg={5} xl={5} className="filter">
-                <Filter researches={posts} />
-            </Col>
-            <Col xs={24} sm={24} md={24} lg={13} xl={13} className="content">
-              <Jumbtron />              
-              {
-                posts &&
-                <div className="list-post animate__animated animate__fadeInUp">
-                  {
-                    posts && posts.map((post) => (
-                      <CardPost                       
-                        key={post._id}
-                        post={post}                        
-                        isUserRes={window.localStorage.id_user===post.uploaderID?true:false}
-                      />
-                    ))
-                  }
-                </div>
-              }
-            </Col>
-            <Col xs={0} sm={0} md={0} lg={6} xl={6} className="profile">
-              <Myprofile data={profile} />
-            </Col>
-          </Row>
-          <BackTop>            
-            <Button type="primary" shape="circle" icon={<UpOutlined />} size="large" />
-          </BackTop>
-        </div>
+      <div style={{position: 'relative'}} onClick={handleClick}>
+        <Navbar justLogo="false" />
+        <Row className="home-container">
+          <Col xs={0} sm={0} md={0} lg={5} xl={5} className="filter">
+            <Filter researches={posts} />
+          </Col>
+          <Col xs={24} sm={24} md={24} lg={13} xl={13} className="content">
+            <Jumbtron />              
+            {
+              posts &&
+              <div className="list-post animate__animated animate__fadeInUp">
+                {
+                  posts && posts.map((post) => (
+                    <CardPost                       
+                      key={post._id}
+                      post={post}                        
+                      isUserRes={window.localStorage.id_user===post.uploaderID?true:false}
+                    />
+                  ))
+                }
+              </div>
+            }
+          </Col>
+          <Col xs={0} sm={0} md={0} lg={6} xl={6} className="profile">
+            <Myprofile data={profile} />
+          </Col>
+        </Row>
+        <BackTop>            
+          <Button type="primary" shape="circle" icon={<UpOutlined />} size="large" />
+        </BackTop>
+      </div>
     )
 }
 

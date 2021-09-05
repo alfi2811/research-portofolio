@@ -1,131 +1,130 @@
 @import '../../assets//scss/colors.scss';
-.detailres-container {        
-    padding: 20vmin 0 6vmin;
+.detailres-container {
+    font-size: 16px;
+    padding: 120px 0 28px;
     width: 100%;
     min-height: 100vh;
     .research-header {
-        margin: 0 auto;
-        width: 75%;
-        background-color: white;
-        padding: 5vmin 3vw;
-        border-radius: 16px;
-        .title {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            h1 {
-                font-size: 3.3vmin;
-                font-weight: bold;
-            }
-            img {
-                width: 6vmin;
-                cursor: pointer;
-            }
+      margin: 0 auto;
+      width: 75%;
+      background-color: white;
+      padding: 28px 40px;
+      border-radius: 16px;
+      .title {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          h1 {
+            font-size: 1.5em;
+            font-weight: bold;
+          }
+          img {
+            width: 42px;
+            cursor: pointer;
+          }
+      }
+      .statistic {
+        display: flex;
+        font-size: 0.9em;
+        color: $rezearch-gray;
+        margin: 16px 0;            
+        div:last-child {
+          margin-left: 16px;
         }
-        .statistic {
-            display: flex;
-            font-size: 2vmin;
-            color: $rezearch-gray;
-            margin: 2vmin 0;
-            
-            div:last-child {
-                margin-left: 2vw;
+        img {
+          width: 24px;
+          margin-right: 8px;
+        }
+      }
+      h2 {
+        font-size: 1.1em;
+      }
+      .authors {
+        margin-top: 20px;
+        display: flex;
+        .author {
+          display: flex;
+          align-items: center;
+          margin: 0 20px 24px 0;                
+          .desc {   
+            margin-left: 16px;     
+            .nama {
+              font-size: 0.9em;
+              color: black;                
             }
-            img {
-                width: 4vmin;
-                margin-right: .5vw;
-            }  
-        }
-        h2 {
-            font-size: 2.6vmin;
-        }
-        .authors {
-            margin-top: 3vmin;
-            display: flex;
-            .author {
-                display: flex;
-                align-items: center;
-                margin: 0 2vw 3vmin 0;                
-                .desc {   
-                    margin-left: 1.5vw;     
-                    .nama {
-                        font-size: 2.1vmin;
-                        color: black;                
-                    }
-                    .institusi {
-                        font-size: 2vmin;
-                        color: $rezearch-gray;                
-                    }
-                }                
+            .institusi {
+              font-size: 0.8em;
+              color: $rezearch-gray;                
             }
+          }                
         }
+      }
     }
     .research-tab {
-        margin: 4vmin auto 0;
+        margin: 36px auto 0;
         width: 75%;
         background-color: white;
-        padding: 5vmin 3vw;
+        padding: 28px 40px;
         border-radius: 16px;
         .ant-tabs-tab {
-            padding-left: 0.5vw;
-            padding-right: 0.5vw;
-            &-btn {
-                font-family: 'Lato', sans-serif;
-                font-weight: 600;
-                font-size: 2.4vmin;
-
-            }
+          padding-left: 4px;
+          padding-right: 4px;
+          &-btn {
+            font-family: 'Lato', sans-serif;
+            font-weight: 600;
+            font-size: 1.2em;
+          }
         }
         .research-pdf {
-            width: 75%;
-            font-family: 'Lato', sans-serif;
-            margin: 5vmin 0 10vmin;
-            h2 {
-                font-size: 2.4vmin;
-                font-weight: bold;
-                margin-bottom: 4vmin;
+          width: 75%;
+          font-family: 'Lato', sans-serif;
+          margin: 32px 0 56px;
+          h2 {
+            font-size: 1.25em;
+            font-weight: bold;
+            margin-bottom: 28px;
+          }
+          img {
+            width: 60%;
+          }
+          .title {
+            font-size: 1em;
+            div:not(:last-child) {
+              font-weight: bold;                    
             }
-            img {
-                width: 60%;
-            }
-            .title {
-                font-size: 2.2vmin;
-                div:not(:last-child) {
-                    font-weight: bold;                    
-                }
-            }
-            p {
-                font-size: 2vmin;
-                color: $rezearch-gray;                
-            }
+          }
+          p {
+            font-size: 1em;
+            color: $rezearch-gray;                
+          }
         }
         .research-detail {
-            margin-top: 4vmin;
-            .ant-row {
-                margin-bottom: 3.5vmin;
+          margin-top: 28px;
+          .ant-row {
+            margin-bottom: 24px;
+          }
+          .ant-col {
+            font-family: 'Lato', sans-serif;                
+            &:first-child {
+              font-weight: bold;
+              font-size: 1.1em;
             }
-            .ant-col {
-                font-family: 'Lato', sans-serif;                
-                &:first-child {
-                    font-weight: bold;
-                    font-size: 2.2vmin;
-                }
-                &:last-child {
-                    color: $rezearch-gray;
-                    font-size: 1.9vmin;
-                    line-height: 1.8;
-                    letter-spacing: 0.02vmin;
-                }
+            &:last-child {
+              color: $rezearch-gray;
+              font-size: 0.9em;
+              line-height: 1.8;
+              letter-spacing: 0.02em;
             }
+          }
         }
         .research-fulltext {
-            width: 90%;
-            margin: 0 auto;
-            border: none;            
-            .rpv-core-inner-page {
-                background: #F2F2F2;
-                padding: 7vmin 4vw;
-            }
+          width: 90%;
+          margin: 0 auto;
+          border: none;            
+          .rpv-core-inner-page {
+            background: #F2F2F2;
+            padding: 40px 24px;
+          }
         }
     }
 }

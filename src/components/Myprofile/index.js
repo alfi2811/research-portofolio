@@ -22,7 +22,9 @@ const Myprofile = ({ data }) => {
         />
         <div className="desc">
             <p className="nama">{ data? data.fullname: 'Anonymous' }</p>
-            <p className="institusi" >{ data? data.role+' at '+data.affiliation: 'Status' }</p>
+            <p className="institusi" >
+              { data?.role && data?.role+' at '} {data? data?.affiliation: 'Status' }
+            </p>
         </div>
       </div>
       <div className="statistik">

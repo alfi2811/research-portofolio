@@ -3,6 +3,7 @@ import { Switch, BrowserRouter as Router, Route } from "react-router-dom";
 import { Spin } from 'antd';
 // Component
 import NotFound from '../helper/components/404';
+import ViewportRestrict from '../helper/components/viewport';
 
 // Pages
 import Login from '../pages/Login';
@@ -28,6 +29,7 @@ class Main extends Component {
     return (
       <Router>
         <div id="Main" className="main-panel">		
+          <ViewportRestrict display={true} type="portrait" />
           <Spin spinning={this.props.main.loader}>
             <div className="content-container">
               <Switch>

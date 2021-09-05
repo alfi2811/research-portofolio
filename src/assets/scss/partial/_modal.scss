@@ -3,177 +3,74 @@ $cdn: "https://cdngarenanow-a.akamaihd.net/webid/AOV/ramadhan/";
 .react-responsive-modal-overlay {
 	background: rgba(0, 0, 0, 0.85);
 }
-$green-emerald: #85ff6a;
 .customOverlay {
 	background: rgba(0, 0, 0, 0);
 }
-.modal-container {
+.modal-container {  
 	max-width: none !important;
-	padding: 2vw 5vw  !important;
-	// width: 60vw;	
+	padding: 20px 60px  !important;
+	width: 65%;
 	background-color: transparent !important;
 	box-shadow: none !important;
   font-size: 16px;
+  position: relative;
 	.react-responsive-modal-closeButton {
 		outline: none;
 	}
 	.btn-close {
 		position: absolute;
-		right: 1vmin;
-		top: 1vmin;
+		right: 0;
+		top: 0;
 		cursor: pointer;
     svg {
       color: white;
+    }		
+    &.alert {
+      right: 100px;
+		  top: 5px;
     }
-		img {
-			width: 7vh;
-		}
 	}
 }
 
-.modal-success,
-.modal-info,
-.modal-notice,
-.modal-congrats,
-.modal-alert,
-.modal-fail {
-	max-width: none;
-	box-shadow: none;
-	font-family: "Roboto";
-
-	.title {
-		height: 21%;
-		align-items: center;
-
-		h1 {
-			font-weight: bold;
-			font-size: 5vh;
-			color: darkblue;
-			text-align: center;
-		}
-	}
-}
-
-.modal-message {
-	background-color: darkblue;
-	background-size: 100% 100%;
-	background-repeat: no-repeat;
+.modal-message {			
 	display: flex;
 	flex-direction: column;
 	position: relative;
 	.title {
 		display: flex;
 		justify-content: center;
-	}
-	.tab {
-		// background-color: darkcyan;	
-		position: relative;
-		display: flex;
-		justify-content: center;
-
-		img {
-			width: 60vmin;			
-			position: absolute;			
-			top: -2.5vmin;
-		}
-	}
+	}	
 	.info-text {
-		width: 70%;
-		margin: auto;
-
-		li {
-			color: #ffffff;
-			font-family: "Helvetical Blk";
-			font-size: 1.8vw;
-			line-height: 3vw;
-
-			span {
-				font-weight: bold;
-				letter-spacing: 0.1vw;
-			}
-		}
+		width: 100%;
+		margin: auto;		
 	}
 }
-
-.modal-info,
-.modal-congrats,
-.modal-alert
-.modal-fail,
-.modal-history {
-	width: 100%;
-	height: 100%;
-	margin: 0 auto;	
-	.info-text {
-		height: 70%;
-		width: 70%;
-
-		.rules {
-			// margin: 0 auto;
-			margin: 4vmin auto;
-			padding-right: 2vw;
-			width: 100%;
-			height: 80%;
-			overflow-y: auto;
-			&::-webkit-scrollbar {
-				border-radius: 10px;
-				width: 0.9vw;
-			}
-			&::-webkit-scrollbar-track {
-				background: red;
-				border-radius: 10px;
-			}
-			&::-webkit-scrollbar-thumb {
-				border-radius: 10px;
-				background: brown;
-			}
-			ol,
-			ul {
-				li {
-					font-family: "Helvetica";					
-					font-size: 2.5vmin;
-					line-height: 1.2;
-					color: red;
-
-					&:not(:last-child) {
-						margin-bottom: 2%;
-					}
-				}
-			}
-			ol {
-				list-style-type: decimal;
-				padding-inline-start: 7%;
-			}
-		}
-	}
-}
-
 
 .modal-info {
   background: white;
 	background-size: 100% 100%;
 	color: white;
 	height: 80vh;
-	width: 60vw;
-
+	width: 100%;
 	.info-text {				
 		width: 90%;		
 		font-family: 'Lato';		
     height: 100%;
     overflow-y: auto;    
     font-size: 16px;
-    margin: 2em auto;    
+    margin: 32px auto;    
     padding-right: 12px;
     text-align: justify;
     h1 {
       font-size: 1.5em;
       font-weight: bold;
-      margin-bottom: 1.5em;
+      margin-bottom: 28px;
     }
     p {
       color: $rezearch-grey;
       font-size: 1em;
-      line-height: 1.5em;
-      margin-bottom: 1.25em;
+      line-height: 1.5;
+      margin-bottom: 20px;
     }
 	}	
 }
@@ -183,13 +80,14 @@ $green-emerald: #85ff6a;
 	background-size: 100% 100%;
 	color: white;
 	height: 80vh;
-	width: 40vw;
+	width: 70%;
+  margin: 0 auto;
 	
 	.info-text {		
-		width: 90%;
+		width: 100%;
 		font-family: 'Lato';
     font-size: 16px;		
-		line-height: 5vmin;
+		line-height: 1.5;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
@@ -202,95 +100,54 @@ $green-emerald: #85ff6a;
       width: 50%;
     }
 		.btn-ok {
-			margin-top: 5vmin;
+			margin-top: 28px;
 			.ant-btn {
         width: 100%;
-        height: 3em;
+        height: 3.3em;
         border: 1px solid $rezearch-blue-2;
         color: $rezearch-blue-2;
         border-radius: 24px;
-        padding: 0 4vw;
-        
+        padding: 0 56px;        
         &:hover {
-            color: white;
-            background-color: $rezearch-blue-2;
+          color: white;
+          background-color: $rezearch-blue-2;
         }
       }
 		}
-    p {
-      margin-top: 2vmin;
+    p {     
+      margin-top: 16px; 
       font-size: 1em;
       color: $rezearch-grey;
+      a {
+        color: $rezearch-blue-2;
+      }
     }
 	}
 }
 
-.modal-error {
-	background: url($link+"popup/reward_dan_rules_bg.png");
-	background-size: 100% 100%;
-	color: brown;
-	height: 50vh;
-	width: 40vw;
+// .modal-error {
+// 	background: url($link+"popup/reward_dan_rules_bg.png");
+// 	background-size: 100% 100%;
+// 	color: brown;
+// 	height: 50vh;
+// 	width: 40vw;
 	
-	.info-text {		
-		width: 90%;
-		height: 70%;
-		font-family: 'Helvetica';
-		font-size: 2.8vmin;
-		line-height: 5vmin;
-		display: flex;
-		flex-direction: column;		
-		align-items: center;  
-    justify-content: center;
-    p {      
-      text-align: center;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 85%;
-    }
-		.info {
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-			align-items: center;
-			font-size: 2.8vmin;	
-			line-height: 1.2;			
-			text-align: center;
-			margin-top: 6vmin;
-			.group {
-				display: flex;
-				align-items: center;
-				justify-content: space-between;
-				flex-wrap: wrap;
-			}
-			.card {				
-				background: url($link+'/popup/item_frame.png');
-				background-size: 100% 100%;
-				position: relative;
-				margin-bottom: 2vmin;
-				margin-right: 1vw;
-				padding: 3vmin 2.5vmin;
-				img {
-					width: 10vmin;
-				}			
-				span {
-					font-family: 'Roboto';
-					font-size: 2.2vmin;
-					font-weight: bold;
-					color: brown;
-					position: absolute;
-					right: .8vw;
-					bottom: 1.5vmin;
-				}
-			}	
-		}
-		.btn-ok {		  	
-			img {
-				width: 25vmin;
-				cursor: pointer;
-			}
-		}
-	}
-}
+// 	.info-text {		
+// 		width: 90%;
+// 		height: 70%;
+// 		font-family: 'Helvetica';
+// 		font-size: 2.8vmin;
+// 		line-height: 5vmin;
+// 		display: flex;
+// 		flex-direction: column;		
+// 		align-items: center;  
+//     justify-content: center;
+// 		.btn-ok {		  	
+// 			img {
+// 				width: 25vmin;
+// 				cursor: pointer;
+// 			}
+// 		}
+// 	}
+// }
 

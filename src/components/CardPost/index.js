@@ -35,10 +35,7 @@ const CardPost = ({ post, isUserRes }) => {
       centered: true,
       onOk() {
         dispatch(delete_research(post._id))
-      },
-      onCancel() {
-        console.log('Cancel');
-      },
+      },      
     });
   }
   const handleBookmark = (id) => {
@@ -68,8 +65,7 @@ const CardPost = ({ post, isUserRes }) => {
 
     document.execCommand("copy")
     newInput.remove()      
-  }
-  console.log(isUserRes)
+  }  
   return (
       <div className="card">
           <div className="card-header">

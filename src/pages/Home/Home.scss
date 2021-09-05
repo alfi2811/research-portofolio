@@ -1,21 +1,28 @@
+@import '../../assets/scss/colors.scss';
 .home-container {
-    margin: 0 3vw;
-    padding-top: 7vmax;
-    padding-bottom: 2vmin;
-    .profile {
-        padding-left: 2vw;
-    }
-    .list-post {
-        margin-top: 4vmin;
-    }
-    .backtotop {
-      height: 40;
-      width: 40;
-      line-height: 40px;
-      border-radius: 4;
-      background-color: #1088e9;
-      color: #fff;
-      text-align: center;
-      font-size: 14px;
-    }
+  margin: 0 48px;
+  padding-top: 120px;
+  padding-bottom: 24px;
+  .profile {
+      padding-left: 2vw;
+  }
+  .list-post {
+      margin-top: 40px;
+  }
+  .backtotop {
+    height: 40;
+    width: 40;
+    line-height: 40px;
+    border-radius: 4;
+    background-color: $rezearch-blue-2;
+    color: $rezearch-white;
+    text-align: center;
+    font-size: 14px;
+  }
+  .ant-back-top button {
+    background-color: $rezearch-blue-2;
+  }
+  @media (max-width: 860px) {
+    padding-top: 50px;    
+  } 
 }

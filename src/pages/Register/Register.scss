@@ -2,49 +2,54 @@
 .register-container {
   width: 70%;
   height: 100%;
+  font-size: 16px;
   .title {
     display: flex;
     align-items: center;
     h1 {
-        font-size: 4vmin;
-        font-weight: 700;        
-        margin-right: 2vw;
+      font-size: 1.8em;
+      font-weight: 700;        
+      margin-right: 16px;
     }
     img {
-        width: 4vmin;
+      width: 30px;
     }
   }  
   .desc {
-    font-size: 2.4vmin;
-    margin: 1vmin 0 3vmin;
+    font-size: 1em;
+    margin: 8px 0 20px;
     color: $rezearch-gray;
   }  
   .ant-btn-round.ant-btn-lg {
-    height: 7vmin;
+    height: 3.3em;
   }
   .ant-row .ant-form-item-label > label {
     color: $rezearch-grey;
     font-size: 14px;
   }
   input {
-    height: 7vmin;
+    height: 3.5em;
     border-radius: 24px;
-    padding: 0 2vw;
-    border: 1px solid #CAF0F8;
+    padding: 0 24px;
+    border: 1px solid $rezearch-blue-3;
   }
   .ant-form-item {
-    margin-bottom: 2vmin;
+    margin-bottom: 12px;
   }
   .ant-input-password {
     border-radius: 24px;
-    padding: 0 2vw;
-    border: 1px solid #CAF0F8;
+    padding: 0 28px;
+    border: 1px solid $rezearch-blue-3;
     input {
-      height: 7vmin;
+      height: 3.3em;
       &:focus {
           box-shadow: none !important;
       }
     }  
+  }
+  .ant-form-item-explain.ant-form-item-explain-error,
+  .ant-form-item-explain.ant-form-item-explain-success {
+    margin-left: 16px;
   }
   .regis-link {
     text-align: center;

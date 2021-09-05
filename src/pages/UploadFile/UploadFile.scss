@@ -1,53 +1,84 @@
 @import '../../assets//scss/colors.scss';
 .upload-container {    
-    // background-color: $rezearch-blue;
-    padding: 15vmin 0 6vmin;
-    width: 100%;
-    font-size: 16px;
-    .upload-form {
-        margin: 0 auto;
-        width: 80%;
-        background-color: white;
-        padding: 6vmin 6vw;
-        border-radius: 16px;
-        .title {        
-            font-size: 4vmin;
-            margin-bottom: 5vmin;
-        }
-        .ant-btn-round.ant-btn-lg {
-            height: 3.5em;
-            background: #48CAE4;
-            border-color: #48CAE4;
-        }
-        .ant-picker {
-            border-radius: 24px;
-            padding: 0 1vw 0 0;
-            width: 100%;
-        }
-        input {
-            height: 3.7em;
-            border-radius: 24px;
-            padding: 0 2vw;
-        }
-        textarea {
-            padding: 3vmin 2vw;
-            border-radius: 24px;
-        }
-        .ant-checkbox-wrapper {
-          margin-bottom: 2em;
-          font-size: 16px;
-          color: #B4B4B4;
-        }
-        button {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 40vw;
-            margin: 0 auto;
-            border-radius: 24px;
-            span {
-                margin-left: 1vw;
-            }
-        }
+  padding: 120px 0 24px;
+  width: 100%;
+  font-size: 16px;
+  .upload-form {
+    margin: 0 auto;
+    width: 80%;      
+    background-color: white;
+    padding: 40px 64px;
+    border-radius: 16px;
+    .title {        
+      font-size: 1.7em;
+      margin-bottom: 32px;
     }
+    .ant-upload-drag-icon img {
+      width: 10%;
+    }
+    .ant-upload.ant-upload-drag {
+      background-color: transparent;
+      border-radius: 24px;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      border-color: $rezearch-blue-2;
+      p.ant-upload-text {
+        margin-bottom: 12px;
+      }
+    }
+    .ant-btn-round {
+      height: 3.5em;
+      background: $rezearch-blue-2;
+      border-color: $rezearch-blue-2;
+    }
+    .ant-picker {
+      border-radius: 24px;
+      padding: 0 16px 0 0;
+      width: 100%;
+      border: 1px solid $rezearch-blue-3;
+      input {
+        border-color: transparent;
+      }
+    }
+    input {
+      height: 3.7em;
+      border-radius: 24px;
+      padding: 0 24px;
+      border: 1px solid $rezearch-blue-3;
+    }
+    textarea {        
+      padding: 20px 24px;
+      border-radius: 24px;
+      border: 1px solid $rezearch-blue-3;
+    }
+    .ant-checkbox-wrapper {
+      margin-bottom: 32px;
+      font-size: 1em;
+      color: #B4B4B4;
+      align-items: flex-start;
+    }
+    .ant-checkbox-inner {  
+      width: 20px;
+      height: 20px;
+      border: 1px solid #CAF0F8;        
+    }
+    button {
+      display: flex;
+      justify-content: center;
+      align-items: center;        
+      margin: 0 auto;
+      padding: 0 28px;
+      border-radius: 16px;
+      span {
+        margin-left: 12px;
+      }
+      &.upload-btn {
+        width: 100%;  
+        border-radius: 24px;
+      }
+    }
+  }
+  @media (max-width: 860px) {
+    padding-top: 50px;    
+  } 
 }

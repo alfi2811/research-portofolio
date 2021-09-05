@@ -1,119 +1,119 @@
 @import '../../assets/scss/colors.scss';
 
 .card {
-    width: 93%;
-    margin: 0 auto 4vmin;
-    background: white;
-    padding: 5vmin 3vw;
-    border-radius: 16px;
-    font-size: 16px;
-    &-header {
+  width: 93%;
+  font-size: 16px;
+  margin: 0 auto 32px;
+  background: white;
+  padding: 36px;
+  border-radius: 16px;
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.5em;
+    .left {
       display: flex;
-      justify-content: space-between;
-      margin-bottom: 1.5em;
-      .left {
-        display: flex;
-        align-items: center;
-        .desc {   
-            margin-left: 1.6em;     
-            .nama {
-                font-size: 0.95em;
-                color: black;                
-            }
-            .institusi {
-                font-size: 0.75em;
-                color: $rezearch-gray;                
-            }
+      align-items: center;
+      .desc {   
+        margin-left: 1.6em;     
+        .nama {
+          font-size: 0.95em;
+          cursor: pointer;                          
         }
-      }
-      .right {
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        .btn-active {
-          position: absolute;
-        }
-        img {          
-          cursor: pointer;
+        .institusi {
+          font-size: 0.75em;
+          color: $rezearch-gray;                
         }
       }
     }
-    &-text {
-        margin: 2vmin 0;
-        p {
-            font-size: 1em;
-            font-weight: bold;
-        }
+    .right {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .btn-active {
+        position: absolute;
+      }
+      img {          
+        cursor: pointer;
+      }
     }
-    &-info {
-        display: flex;
-        font-size: 0.75em;
-        color: $rezearch-gray;
-        margin-bottom: 2em;
-        div:last-child {
-            margin-left: 1.5em;
-        }
-        img {
-            width: 2em;
-            margin-right: 0.5em;
-        }        
+  }
+  &-text {
+    margin: 20px 0;
+    p {
+      font-size: 1em;
+      font-weight: bold;
     }
-    &-button {
+  }
+  &-info {
+    display: flex;
+    font-size: 0.75em;
+    color: $rezearch-gray;
+    margin-bottom: 2em;
+    div:last-child {
+      margin-left: 1.5em;
+    }
+    img {
+      width: 2em;
+      margin-right: 0.5em;
+    }        
+  }
+  &-button {
+    display: flex;
+    justify-content: space-between;
+    &-left {
+      display: flex;
+      button {
         display: flex;
-        justify-content: space-between;
-        &-left {
-          display: flex;
-          button {
-              display: flex;
-              align-items: center;
-              color: white;                           
-              background: $rezearch-blue-2;
-              border: none; 
-              &.ant-btn {    
-                  height: 2.8em;
-                  border-radius: 16px;
-                  padding: 0 1.5em;
-              }
-              span:last-child {
-                  font-size: 0.8em;
-                  margin-left: 1vw;
-              } 
-              &:first-child {
-                  &:hover {
-                    background: $rezearch-blue;
-                    color: white;
-                  }
-              }
-              &:last-child {       
-                  background: white;
-                  border: 1px solid $rezearch-blue-2;
-                  color: $rezearch-blue-2;
-                  margin-left: 2vw;       
-                  &:hover {
-                    background: $rezearch-blue-2;
-                    color: white;
-                  }
-              }
+        align-items: center;
+        color: white;                           
+        background: $rezearch-blue-2;
+        border: none; 
+        &.ant-btn {    
+          height: 2.8em;
+          border-radius: 16px;
+          padding: 0 1.5em;
+        }
+        span:last-child {
+          font-size: 0.8em;
+          margin-left: 12px;
+        } 
+        &:first-child {
+          &:hover {
+            background: $rezearch-blue;
+            color: white;
           }
         }
-        &-right {
-          button {         
-            display: flex;
-            align-items: center;               
-            &:hover {
-              background: #ff4d4f;
-              color: white;
-            }
-            &.ant-btn {    
-              height: 2.8em;
-              border-radius: 16px;
-              padding: 0 1.5em;
-            }
-            span:last-child {
-              font-size: 0.8em;                
-            } 
+        &:last-child {       
+          background: white;
+          border: 1px solid $rezearch-blue-2;
+          color: $rezearch-blue-2;
+          margin-left: 20px;
+          &:hover {
+            background: $rezearch-blue-2;
+            color: white;
           }
         }
+      }
     }
+    &-right {
+      button {         
+        display: flex;
+        align-items: center;               
+        &:hover {
+          background: #ff4d4f;
+          color: white;
+        }
+        &.ant-btn {    
+          height: 2.8em;
+          border-radius: 16px;
+          padding: 0 1.5em;
+        }
+        span:last-child {
+          font-size: 0.8em;                
+        } 
+      }
+    }
+  }
 }

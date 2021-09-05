@@ -23,8 +23,7 @@ const main = (state = main_state, action) => {
       return { ...state, [action.tipe]: action.bool, modal_msg: action.msg, modal_data: action.data};
 		case "SEARCH_RESEARCH":
       let a = [...state.list_research];
-      let newA = a.filter((dt) => dt.articleTitle.includes(action.key))
-      console.log(newA)
+      let newA = a.filter((dt) => dt.articleTitle.includes(action.key))      
 			return { ...state, list_research: newA };	
 		default:
 			return state;

@@ -1,27 +1,28 @@
 @import '../../assets//scss/colors.scss';
 .login-container {
   width: 60%;
+  font-size: 16px;
   .title {
-      display: flex;
-      align-items: center;
+    display: flex;
+    align-items: center;
     h1 {
-      font-size: 4.5vmin;
+      font-size: 2em;
       font-weight: 700;        
-      margin-right: 2vw;
+      margin-right: 16px;
     }
     img {
-      width: 4.5vmin;
+      width: 30px;
     }
   }
   .desc {
-    font-size: 2.4vmin;
-    margin: 1vmin 0 5vmin;
+    font-size: 1em;
+    margin: 4px 0 28px;
   }
   .ant-btn-round.ant-btn-lg {
-    height: 8vmin;
+    height: 3.3em;
   }
   input {
-    height: 3.5rem;
+    height: 3.5em;
     border-radius: 24px;
     padding: 0 24px;
     border: 1px solid #CAF0F8;
@@ -31,7 +32,7 @@
     padding: 0 24px;
     border: 1px solid #CAF0F8;
     input {
-      height: 3.5rem;
+      height: 3.5em;
       &:focus {
         box-shadow: none !important;
       }
@@ -45,7 +46,7 @@
     text-align: center;
   }
   button {
-    margin-top: 4vmin;
+    margin-top: 32px;
     background: $rezearch-blue-2;
     border-color: $rezearch-blue-2;
     &:hover {

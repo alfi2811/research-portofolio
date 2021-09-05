@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState, useEffect } from 'react'
 import { Button, Col, Row, Form, Menu, Dropdown, Input, Avatar, Divider } from 'antd'
 import { RiSearch2Line } from "react-icons/ri";
 import { PlusCircleOutlined, LogoutOutlined  } from '@ant-design/icons';
@@ -13,18 +13,28 @@ import closeBtn from '../../assets/images/btn-close.svg'
 import bookmark from '../../assets/images/navbar-bookmark.svg'
 import anon from '../../assets/images/anon.png'
 import './Navbar.scss'
-import { useDispatch } from 'react-redux';
-import { search_research, logout } from '../../redux/actions/main';
+import { useDispatch, useSelector } from 'react-redux';
+import { search_research, logout, post_data } from '../../redux/actions/main';
 
 const Navbar = ({justLogo}) => {
   let history = useHistory()
   const [isClose, setIsClose] = useState(true)
   const dispatch = useDispatch()
+  let ls = window.localStorage  
+  useEffect(() => {    
+    if(ls.token) {
+      dispatch(post_data("/user/viewUser", "profile_data"))
+    }
+  }, [dispatch, ls.token])
+
+  const main = useSelector(state => state?.main)  
+  const profile = main?.profile_data.dataUser?.photoProfile
+  
   const handleKeyPress = (value) => {            
     dispatch(search_research(value.key))
-  }
+  }  
   const handleClick = (link) => {    
-    if(window.localStorage.token) {
+    if(ls.token) {
       history.push(link)
     }
   }
@@ -41,7 +51,7 @@ const Navbar = ({justLogo}) => {
         <Row>
           <Col span={5} className="title">
             <Link to="/">
-                <img src={Logo} alt="" />
+              <img src={Logo} alt="" />
             </Link>
           </Col>
           {
@@ -98,36 +108,45 @@ const Navbar = ({justLogo}) => {
       </div>
       <div className="navbar-container-mobile">
         <div className="row">
-          <img src={MenuMobile} onClick={() => setIsClose(false)} alt="" />
-          <img src={Title} className="title" alt="" />
+          <img src={MenuMobile} onClick={() => setIsClose(false)} alt="" />          
+          <img src={Title} onClick={() => handleClick('/')} className="title" alt="" />
           <Avatar
             size={{ xs: 30, sm: 30, md: 32, lg: 32, xl: 32, xxl: 30 }}
-            src={anon}
+            src={profile? profile: anon}
+            onClick={() => handleClick(`/profile/${ls.id_user}`)}
           />
         </div>
-        <div className="row">
-          <Form
-            name="basic"
-            onFinish={handleKeyPress}                  
-          >
-            <Form.Item name="key">
-              <Input placeholder="Find your favorite journal research" name="search" prefix={<RiSearch2Line color="#48CAE4" size="16px" />} />
-            </Form.Item>
-          </Form>
-        </div>
+        {
+          justLogo !== true &&
+          <div className="row" style={{zIndex: '1'}}>
+            <Form
+              name="basic"
+              onFinish={handleKeyPress}                  
+            >
+              <Form.Item name="key">
+                <Input placeholder="Find your favorite journal research" name="search" prefix={<RiSearch2Line color="#48CAE4" size="16px" />} />
+              </Form.Item>
+            </Form>
+          </div>
+        }
         <div className={isClose? "sidebar" : "sidebar showing"}>
           <img src={closeBtn} onClick={() => setIsClose(true)} alt="" />
           <div className="menu">
-            <div className="menu-item" onClick={() => handleClick('/upload')}>
-              <img src={Plus} alt="" />
-              <p>Add New Research</p>
-            </div>
-            <Divider />
-            <div className="menu-item" onClick={() => handleClick('/bookmark')} >
-              <img src={bookmark} alt="" />
-              <p>Bookmark</p>
-            </div>
-            <Divider />
+           {
+             justLogo !== true &&
+             <>
+              <div className="menu-item" onClick={() => handleClick('/upload')}>
+                <img src={Plus} alt="" />
+                <p>Add New Research</p>
+              </div>
+              <Divider />
+              <div className="menu-item" onClick={() => handleClick('/bookmark')} >
+                <img src={bookmark} alt="" />
+                <p>Bookmark</p>
+              </div>
+              <Divider />
+             </>
+           }
             {
               window.localStorage.token && 
               <div className="menu-item" style={{color: 'red'}} onClick={() => dispatch(logout())}>

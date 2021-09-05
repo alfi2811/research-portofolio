@@ -1,17 +1,24 @@
 
 @import '../../assets//scss/colors.scss';
 .bookmark-container { 
-  padding-top: 8vmax; 
+  padding-top: 120px; 
   margin: 0 auto;
   width: 60%;
   min-height: 100vh;
   padding-bottom: 1px;
   h1.title {
     font-weight: 700;
-    font-size: 4vmin;
+    font-size: 32px;
   }
   .card-post {
     width: 80%;
-    margin: 10vmin auto;
+    margin: 72px auto;
   }
+  @media (max-width: 860px) {
+    padding-top: 50px;
+    width: 80%;    
+    .card-post {
+      width: 90%;
+    }
+  } 
 }

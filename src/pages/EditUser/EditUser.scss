@@ -1,36 +1,45 @@
 @import '../../assets/scss/colors.scss';
 .edit-container {
-  padding: 5vmin;
+  padding: 40px;
   font-size: 16px;
+  .back-btn {
+    cursor: pointer;
+    color: $rezearch-blue-2;
+  }
   .form-edit {
     width: 60%;
     margin: 0 auto;
+    margin-top: 20px;
+    @media (max-width: 860px) {
+      margin-top: 20px;
+      width: 90%;
+    } 
     button.btn-save {
       color: white;
       background: $rezearch-blue-2;
       border: none; 
       &.ant-btn {    
-          height: 3.2em;
-          border-radius: 16px;
-          padding: 0 2vw;
+        height: 3.2em;
+        border-radius: 16px;
+        padding: 0 20px;
       }
       span:last-child {
         font-size: 1em;              
       }
       &:first-child {
-          &:hover {
-            background: $rezearch-blue;                                
-          }         
+        &:hover {
+          background: $rezearch-blue;                                
+        }         
       }
     }
   }
   .upload-ava {
-    background-color: white;
-    padding: 3vmin 1.5vw;
-    border-radius: 15px;
-    margin-right: 3vw;
+    background-color: white;    
+    border-radius: 15px;    
     width: 100%;
     height: 100%;
+    padding: 20px;    
+    margin-right: 32px;
     .ant-avatar {
       width: 100%;
       min-height: 200px;
@@ -44,7 +53,7 @@
     .ant-upload {
       width: 100%;
       button.ant-btn {
-        margin-top: 3vmin;
+        margin-top: 20px;
         color: $rezearch-grey;
         font-size: .9em;
         font-family: 'Lato';
@@ -62,16 +71,21 @@
   .change-form {
     width: 100%;
     background: white;
-    padding: 4vmin 2vw;
+    padding: 24px;
     border-radius: 15px;
+    margin-bottom: 16px;
     label {
       color: #B0B7C3;
     }
     input {
       height: 3.3em;
       border-radius: 24px;
-      padding: 0 1.5vw;
+      padding: 0 20px;
       border: 1px solid #b1effc;
+    }
+    .ant-form-item-explain.ant-form-item-explain-error,
+    .ant-form-item-explain.ant-form-item-explain-success {
+      margin-left: 16px;
     }
     .ant-input-password {
       border-radius: 24px;
@@ -87,9 +101,12 @@
     }
     .ant-select {
       .ant-select-selector {
-        padding: 1vw;
+        padding: 8px 12px;
         border-radius: 16px;
         border: 1px solid #b1effc;
+      }
+      .ant-select-selection-placeholder {
+        left: 20px;
       }
     }    
   }

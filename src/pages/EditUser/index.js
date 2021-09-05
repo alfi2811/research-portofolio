@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { Col, Row, Form, Input, Button, Select, Upload, Avatar, message } from 'antd';
 import { LeftOutlined } from '@ant-design/icons';
 import { useHistory } from 'react-router-dom'
-import { Link } from 'react-router-dom';
 import './EditUser.scss'
 import { useDispatch, useSelector } from 'react-redux';
 import { post_data, check_login, post_edit_user, upload_photo, put_data } from '../../redux/actions/main';
@@ -14,8 +13,7 @@ const EditUser = () => {
   const [form] = Form.useForm();
   const dispatch = useDispatch()
   const [fileList, setfileList] = useState(false)
-  let history = useHistory()
-    // const requiredMark = 'optional';
+  let history = useHistory()    
   const [, forceUpdate] = useState({}); // To disable submit button at the beginning.        
 
   useEffect(() => {
@@ -25,9 +23,11 @@ const EditUser = () => {
       dispatch(post_data("/user/getUser", "user_data"))      
     }
   }, [dispatch, history]);
-  const handleChange = (info) => {        
-    console.log('file: ', info);          
+  const handleChange = (info) => {
     setfileList(info.file)
+  };
+  const goToProfile = () => {        
+    history.push(`/profile/${window.localStorage.id_user}`)
   };
   const handleType = (file) => {        
     if (file.type !== 'image/png') {
@@ -35,8 +35,7 @@ const EditUser = () => {
     }
     return file.type === 'image/png' ? false : Upload.LIST_IGNORE;
   };
-  const onFinish = (values) => {        
-    console.log('Received values of form: ', values);      
+  const onFinish = (values) => {
     if(fileList) {
       dispatch(upload_photo(fileList, values, history))
     } 
@@ -47,15 +46,13 @@ const EditUser = () => {
   };
   const main = useSelector(state => state?.main)
   const data = main?.user_data?.result
-  console.log(data)
+  
   return (
     <div className="edit-container">
-      <Link to="/profile">
-        <div className="back-btn">
-          <LeftOutlined /> 
-          <span style={{marginLeft: '2vw'}}>Kembali ke Halaman Profil</span>
-        </div>
-      </Link>
+      <div className="back-btn" onClick={goToProfile}>
+        <LeftOutlined /> 
+        <span style={{marginLeft: '2vw'}}>Back to Profil</span>
+      </div>      
       <div className="form-edit">
         {
           data && 
@@ -75,17 +72,47 @@ const EditUser = () => {
                 </Upload>
               </Col>
               <Col span={14} className="change-form">
-                <Form.Item name="id" initialValue={data?._id} hidden={true}>
-                    <Input />
+                <Form.Item 
+                  name="id" 
+                  initialValue={data?._id}
+                  hidden={true}
+                >
+                  <Input />
                 </Form.Item>
-                <Form.Item label="Fullname" name="fullname" initialValue={data?.fullName}>
-                    <Input />
+                <Form.Item 
+                  label="Fullname" 
+                  name="fullname" 
+                  initialValue={data?.fullName}
+                  required={false}
+                  rules={[
+                    {
+                      required: true,
+                      message: 'Please input your Fullname!',
+                    },
+                  ]}
+                >
+                  <Input />
                 </Form.Item>
-                <Form.Item label="Position" name="role" initialValue={data?.role}>
-                    <Input />
+                <Form.Item 
+                  label="Position" 
+                  name="role" 
+                  initialValue={data?.role}                  
+                >
+                  <Input />
                 </Form.Item>
-                <Form.Item label="Affiliation" name="affiliation" initialValue={data?.affiliation}>
-                    <Input />
+                <Form.Item 
+                  label="Affiliation" 
+                  name="affiliation" 
+                  initialValue={data?.affiliation}
+                  required={false}     
+                  rules={[
+                    {
+                      required: true,
+                      message: 'Please input your Affiliation!',
+                    },
+                  ]}
+                >
+                  <Input />
                 </Form.Item>                
                 <Form.Item
                   name="field"
@@ -103,8 +130,19 @@ const EditUser = () => {
                     <Option value="UI/UX">UI/UX</Option>
                   </Select>
                 </Form.Item>
-                <Form.Item label="Email" name="email" initialValue={data?.email}>
-                    <Input />
+                <Form.Item 
+                  label="Email" 
+                  name="email" 
+                  initialValue={data?.email}
+                  required={false}     
+                  rules={[
+                    {
+                      required: true,
+                      message: 'Please input your Email!',
+                    },
+                  ]}
+                >
+                  <Input />
                 </Form.Item>
                 <Form.Item 
                   label="Password" 

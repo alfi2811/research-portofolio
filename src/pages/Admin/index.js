@@ -16,7 +16,7 @@ const Admin = () => {
   }, [dispatch])
   const main = useSelector(state => state?.main)
   const posts = main?.list_waiting_research
-  console.log(posts)
+    
   const detailRes = (id) => {      
     history.push(`/detail-research/${id}`)
   }

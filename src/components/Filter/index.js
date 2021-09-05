@@ -7,12 +7,10 @@ import { filter_research } from '../../redux/actions/main';
 const Filter = ({ researches }) => {
   const dispatch = useDispatch()
   const [filtered, setFiltered] = useState([])
-  function onChange(checkedValues) {
-      console.log('checked = ', checkedValues);
+  function onChange(checkedValues) {      
       setFiltered(checkedValues)
   }
-  const handleFilter = () => {
-    console.log(filtered)
+  const handleFilter = () => {    
     dispatch(filter_research(filtered))
   }
   const options = [

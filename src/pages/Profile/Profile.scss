@@ -1,9 +1,9 @@
 @import '../../assets//scss/colors.scss';
 .profile-container {    
   background-color: #F6FCFE;
-  padding: 15vmin 0 6vmin;
-  width: 100%;    
   font-size: 16px;
+  padding: 120px 0 32px;  
+  width: 100%;       
   .info {
     margin: 0 auto;
     width: 65%;
@@ -14,12 +14,21 @@
     .left {
       flex-basis: 35%;
       background-color: white;
-      padding: 3vmin 1.5vw;
+      padding: 20px;
       border-radius: 15px;
-      margin-right: 3vw;
+      margin-right: 32px;
       .ant-avatar {
+        width: 100%;
+        height: 250px;
+        border-radius: 15px;
+      }
+      .ant-skeleton.ant-skeleton-element.ant-skeleton-active {
         width: 100%;        
         height: 250px;
+      }
+      .ant-skeleton-element .ant-skeleton-avatar {
+        width: 100%;
+        height: 100%;
         border-radius: 15px;
       }
       img {
@@ -27,7 +36,7 @@
         width: 100%;
       }
       .ant-btn {
-        margin-top: 3vmin;
+        margin-top: 20px;
         color: $rezearch-grey;
         font-size: .9em;
         font-family: 'Lato';
@@ -49,8 +58,7 @@
       justify-content: space-between;
       .detail {
         background-color: white;
-        padding: 4vmin 2vw;
-        margin-bottom: 2vmin;
+        padding: 20px 28px;        
         border-radius: 15px;
         h2 {
           font-size: 1.5em;                    
@@ -62,9 +70,9 @@
         .fields {
           display: flex;
           flex-wrap: wrap;
-          color: #0096C7;
           p {
-            margin-right: 2vw;
+            color: #0096C7;
+            margin-right: 16px;
             font-size: 1em;
             text-transform: capitalize;
           }
@@ -72,7 +80,7 @@
       }
       .numbers {
         background-color: #FFFFFF;
-        padding: 4vmin 2vw;               
+        padding: 20px 28px;               
         display: flex;
         text-align: center;
         justify-content: space-between;
@@ -80,7 +88,7 @@
         &-info {
           border-radius: 15px;
           background-color: $rezearch-grey-2;
-          padding: 3vmin;
+          padding: 20px;
           p {
             &:first-child {
               font-size: 1.1em;
@@ -97,7 +105,16 @@
   }
   .card-post {
     width: 50%;
-    margin: 10vmin auto;
+    margin: 100px auto;
     max-width: 700px;
   }
+  @media (max-width: 860px) {
+    padding: 50px 0 32px;
+    .info {
+      width: 90%;
+    }
+    .card-post {
+      width: 80%;
+    }
+  } 
 }
