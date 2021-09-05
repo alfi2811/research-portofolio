@@ -9,7 +9,7 @@ import Down from '../../assets/images/down.svg'
 import MenuMobile from '../../assets/images/menu.svg'
 import Title from '../../assets/images/title.svg'
 import Plus from '../../assets/images/Plus.svg'
-import Close from '../../assets/images/Close.svg'
+import closeBtn from '../../assets/images/btn-close.svg'
 import bookmark from '../../assets/images/navbar-bookmark.svg'
 import anon from '../../assets/images/anon.png'
 import './Navbar.scss'
@@ -116,8 +116,7 @@ const Navbar = ({justLogo}) => {
           </Form>
         </div>
         <div className={isClose? "sidebar" : "sidebar showing"}>
-          <img src={Close} onClick={() => setIsClose(true)} alt="" />
-
+          <img src={closeBtn} onClick={() => setIsClose(true)} alt="" />
           <div className="menu">
             <div className="menu-item" onClick={() => handleClick('/upload')}>
               <img src={Plus} alt="" />
